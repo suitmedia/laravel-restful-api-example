@@ -1,0 +1,3240 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Laravel Documentation</title>
+
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="css/style.css" media="screen" />
+        <link rel="stylesheet" href="css/print.css" media="print" />
+        <script src="js/all.js"></script>
+
+        <link rel="stylesheet" href="css/highlight-darcula.css" media="" />
+        <script src="js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+
+<body class="" data-languages="[&quot;bash&quot;,&quot;javascript&quot;]">
+<a href="#" id="nav-button">
+      <span>
+        NAV
+            <img src="images/navbar.png" alt="-image" class=""/>
+      </span>
+</a>
+<div class="tocify-wrapper">
+                <div class="lang-selector">
+                            <a href="#" data-language-name="bash">bash</a>
+                            <a href="#" data-language-name="javascript">javascript</a>
+                    </div>
+        <div class="search">
+        <input type="text" class="search" id="input-search" placeholder="Search">
+    </div>
+    <ul class="search-results"></ul>
+
+    <ul id="toc">
+    </ul>
+
+            <ul class="toc-footer" id="toc-footer">
+                            <li><a href="./collection.json">View Postman collection</a></li>
+                            <li><a href="./openapi.yaml">View OpenAPI (Swagger) spec</a></li>
+                            <li><a href='http://github.com/knuckleswtf/scribe'>Documentation powered by Scribe ✍</a></li>
+                    </ul>
+            <ul class="toc-footer" id="last-updated">
+            <li>Last updated: March 5 2021</li>
+        </ul>
+</div>
+<div class="page-wrapper">
+    <div class="dark-box"></div>
+    <div class="content">
+        <h1>Introduction</h1>
+<p>This documentation aims to provide all the information you need to work with our API.</p>
+<aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile).
+You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).</aside>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
+<script>
+    var baseUrl = "http://restful-example.web";
+</script>
+<script src="js/tryitout-2.4.2.js"></script>
+<blockquote>
+<p>Base URL</p>
+</blockquote>
+<pre><code class="language-yaml">http://restful-example.web</code></pre><h1>Authenticating requests</h1>
+<p>Authenticate requests to this API's endpoints by sending an <strong><code>Authorization</code></strong> header with the value <strong><code>"Bearer {YOUR_AUTH_KEY}"</code></strong>.</p>
+<p>All authenticated endpoints are marked with a <code>requires authentication</code> badge in the documentation below.</p>
+<p>You can retrieve your token by visiting your dashboard and clicking <b>Generate API token</b>.</p><h1>Admin Management</h1>
+<p>API Endpoints for managing admins.</p>
+<h2>Resource Collection.</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<p>Display a collection of the admin resources in paginated document format.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://restful-example.web/api/admins" \
+    -H "Authorization: Bearer {YOUR_AUTH_KEY}" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://restful-example.web/api/admins"
+);
+
+let headers = {
+    "Authorization": "Bearer {YOUR_AUTH_KEY}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": [
+        {
+            "id": 1,
+            "name": "Ut quasi molestiae odit voluptas fuga est magnam.",
+            "email": "uriah.west@example.org",
+            "role": "superadmin",
+            "deleted_at": null,
+            "created_at": "2021-03-01T07:00:05.000000Z",
+            "updated_at": "2021-03-01T07:00:05.000000Z"
+        },
+        {
+            "id": 2,
+            "name": "Et ea qui a cupiditate.",
+            "email": "kiley15@example.net",
+            "role": "editor",
+            "deleted_at": null,
+            "created_at": "2021-03-01T07:00:05.000000Z",
+            "updated_at": "2021-03-01T07:00:05.000000Z"
+        },
+        {
+            "id": 3,
+            "name": "Qui mollitia sit enim molestiae.",
+            "email": "judson.wyman@example.net",
+            "role": "editor",
+            "deleted_at": null,
+            "created_at": "2021-03-01T07:00:05.000000Z",
+            "updated_at": "2021-03-01T07:00:05.000000Z"
+        },
+        {
+            "id": 4,
+            "name": "Sunt enim vitae aut consequatur vel enim.",
+            "email": "marks.caesar@example.org",
+            "role": "editor",
+            "deleted_at": null,
+            "created_at": "2021-03-01T07:00:05.000000Z",
+            "updated_at": "2021-03-01T07:00:05.000000Z"
+        },
+        {
+            "id": 5,
+            "name": "In et quia qui voluptatem id quidem quo.",
+            "email": "deanna.borer@example.org",
+            "role": "editor",
+            "deleted_at": null,
+            "created_at": "2021-03-01T07:00:05.000000Z",
+            "updated_at": "2021-03-01T07:00:05.000000Z"
+        },
+        {
+            "id": 6,
+            "name": "Qui ipsam laudantium voluptatibus iste ullam omnis.",
+            "email": "malcolm10@example.net",
+            "role": "editor",
+            "deleted_at": null,
+            "created_at": "2021-03-01T07:00:05.000000Z",
+            "updated_at": "2021-03-01T07:00:05.000000Z"
+        },
+        {
+            "id": 7,
+            "name": "Pariatur quae architecto quam dolorem.",
+            "email": "lueilwitz.dorcas@example.com",
+            "role": "editor",
+            "deleted_at": null,
+            "created_at": "2021-03-01T07:00:05.000000Z",
+            "updated_at": "2021-03-01T07:00:05.000000Z"
+        },
+        {
+            "id": 8,
+            "name": "Tempora porro qui repudiandae sed.",
+            "email": "kuhlman.keara@example.org",
+            "role": "editor",
+            "deleted_at": null,
+            "created_at": "2021-03-01T07:00:05.000000Z",
+            "updated_at": "2021-03-01T07:00:05.000000Z"
+        },
+        {
+            "id": 9,
+            "name": "Beatae nemo praesentium sunt blanditiis et rerum in.",
+            "email": "magnolia.kuhic@example.net",
+            "role": "editor",
+            "deleted_at": null,
+            "created_at": "2021-03-01T07:00:05.000000Z",
+            "updated_at": "2021-03-01T07:00:05.000000Z"
+        },
+        {
+            "id": 10,
+            "name": "Tempora voluptate eum tenetur nesciunt recusandae.",
+            "email": "mollie92@example.net",
+            "role": "editor",
+            "deleted_at": null,
+            "created_at": "2021-03-01T07:00:05.000000Z",
+            "updated_at": "2021-03-01T07:00:05.000000Z"
+        },
+        {
+            "id": 11,
+            "name": "Quo quia earum voluptatibus delectus sint aut eos nam.",
+            "email": "shanelle80@example.com",
+            "role": "editor",
+            "deleted_at": null,
+            "created_at": "2021-03-01T07:00:05.000000Z",
+            "updated_at": "2021-03-01T07:00:05.000000Z"
+        },
+        {
+            "id": 12,
+            "name": "Dignissimos tempore inventore perspiciatis autem voluptate provident magni.",
+            "email": "rdach@example.org",
+            "role": "superadmin",
+            "deleted_at": null,
+            "created_at": "2021-03-01T07:01:04.000000Z",
+            "updated_at": "2021-03-01T07:01:04.000000Z"
+        },
+        {
+            "id": 13,
+            "name": "Voluptatem et aliquid ab necessitatibus dolores perspiciatis voluptas.",
+            "email": "mante.emelie@example.org",
+            "role": "editor",
+            "deleted_at": null,
+            "created_at": "2021-03-01T07:01:05.000000Z",
+            "updated_at": "2021-03-01T07:01:05.000000Z"
+        },
+        {
+            "id": 14,
+            "name": "A minus dolores dolores.",
+            "email": "sfarrell@example.org",
+            "role": "editor",
+            "deleted_at": null,
+            "created_at": "2021-03-01T07:01:05.000000Z",
+            "updated_at": "2021-03-01T07:01:05.000000Z"
+        },
+        {
+            "id": 15,
+            "name": "Qui voluptas et veniam soluta ipsam dolor facere nihil.",
+            "email": "lew95@example.net",
+            "role": "editor",
+            "deleted_at": null,
+            "created_at": "2021-03-01T07:01:05.000000Z",
+            "updated_at": "2021-03-01T07:01:05.000000Z"
+        },
+        {
+            "id": 16,
+            "name": "Quia eum illum maxime.",
+            "email": "lmueller@example.net",
+            "role": "editor",
+            "deleted_at": null,
+            "created_at": "2021-03-01T07:01:05.000000Z",
+            "updated_at": "2021-03-01T07:01:05.000000Z"
+        },
+        {
+            "id": 17,
+            "name": "Delectus voluptatem cupiditate veritatis aut doloribus accusantium nihil.",
+            "email": "marielle84@example.org",
+            "role": "editor",
+            "deleted_at": null,
+            "created_at": "2021-03-01T07:01:05.000000Z",
+            "updated_at": "2021-03-01T07:01:05.000000Z"
+        },
+        {
+            "id": 18,
+            "name": "Est molestiae ut officia omnis reiciendis voluptatibus.",
+            "email": "paul62@example.com",
+            "role": "editor",
+            "deleted_at": null,
+            "created_at": "2021-03-01T07:01:05.000000Z",
+            "updated_at": "2021-03-01T07:01:05.000000Z"
+        },
+        {
+            "id": 19,
+            "name": "Et est ut veritatis qui.",
+            "email": "yhermann@example.net",
+            "role": "editor",
+            "deleted_at": null,
+            "created_at": "2021-03-01T07:01:05.000000Z",
+            "updated_at": "2021-03-01T07:01:05.000000Z"
+        },
+        {
+            "id": 20,
+            "name": "Ipsam sint voluptatem error similique.",
+            "email": "cormier.jacquelyn@example.net",
+            "role": "editor",
+            "deleted_at": null,
+            "created_at": "2021-03-01T07:01:05.000000Z",
+            "updated_at": "2021-03-01T07:01:05.000000Z"
+        },
+        {
+            "id": 21,
+            "name": "Quia magni et vel et quas aut.",
+            "email": "rmurazik@example.net",
+            "role": "editor",
+            "deleted_at": null,
+            "created_at": "2021-03-01T07:01:05.000000Z",
+            "updated_at": "2021-03-01T07:01:05.000000Z"
+        },
+        {
+            "id": 22,
+            "name": "Iusto harum quia autem.",
+            "email": "sheldon.bauch@example.net",
+            "role": "editor",
+            "deleted_at": null,
+            "created_at": "2021-03-01T07:01:05.000000Z",
+            "updated_at": "2021-03-01T07:01:05.000000Z"
+        },
+        {
+            "id": 25,
+            "name": "Faizal",
+            "email": "faizal@suitmedia.com",
+            "role": "editor",
+            "deleted_at": null,
+            "created_at": "2021-03-01T08:00:21.000000Z",
+            "updated_at": "2021-03-01T08:00:21.000000Z"
+        }
+    ],
+    "links": {
+        "first": "http:\/\/localhost\/api\/admins?page%5Bnumber%5D=1",
+        "last": "http:\/\/localhost\/api\/admins?page%5Bnumber%5D=1",
+        "prev": null,
+        "next": null
+    },
+    "meta": {
+        "current_page": 1,
+        "from": 1,
+        "last_page": 1,
+        "links": [
+            {
+                "url": null,
+                "label": "&amp;laquo; Previous",
+                "active": false
+            },
+            {
+                "url": "http:\/\/localhost\/api\/admins?page%5Bnumber%5D=1",
+                "label": "1",
+                "active": true
+            },
+            {
+                "url": null,
+                "label": "Next &amp;raquo;",
+                "active": false
+            }
+        ],
+        "path": "http:\/\/localhost\/api\/admins",
+        "per_page": 30,
+        "to": 23,
+        "total": 23
+    }
+}</code></pre>
+<div id="execution-results-GETapi-admins" hidden>
+    <blockquote>Received response<span id="execution-response-status-GETapi-admins"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-admins"></code></pre>
+</div>
+<div id="execution-error-GETapi-admins" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-admins"></code></pre>
+</div>
+<form id="form-GETapi-admins" data-method="GET" data-path="api/admins" data-authed="1" data-hasfiles="0" data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-admins', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-GETapi-admins" onclick="tryItOut('GETapi-admins');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-GETapi-admins" onclick="cancelTryOut('GETapi-admins');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-GETapi-admins" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-green">GET</small>
+ <b><code>api/admins</code></b>
+</p>
+<p>
+<label id="auth-GETapi-admins" hidden>Authorization header: <b><code>Bearer </code></b><input type="text" name="Authorization" data-prefix="Bearer " data-endpoint="GETapi-admins" data-component="header"></label>
+</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>fields[admins]</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="fields[admins]" data-endpoint="GETapi-admins" data-component="query"  hidden>
+<br>
+*string* - 
+Comma-separated field/attribute names of the admin resource to include in the response document.
+The available fields for current endpoint are: `id`, `name`, `email`, `password`, `deleted_at`, `created_at`, `updated_at`.</p>
+<p>
+<b><code>page[size]</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="page[size]" data-endpoint="GETapi-admins" data-component="query"  hidden>
+<br>
+*integer* - 
+Describe how many records to display in a collection.</p>
+<p>
+<b><code>page[number]</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+<input type="number" name="page[number]" data-endpoint="GETapi-admins" data-component="query"  hidden>
+<br>
+*integer* - 
+Describe the number of current page to display.</p>
+<p>
+<b><code>include</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="include" data-endpoint="GETapi-admins" data-component="query"  hidden>
+<br>
+*string* - 
+Comma-separated relationship names to include in the response document.
+The available relationships for current endpoint are: `posts`.</p>
+<p>
+<b><code>sort</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="sort" data-endpoint="GETapi-admins" data-component="query"  hidden>
+<br>
+*string* - 
+Field/attribute to sort the resources in response document by.
+The available fields for sorting operation in current endpoint are: `id`, `name`, `email`, `password`, `deleted_at`, `created_at`, `updated_at`.</p>
+<p>
+<b><code>filter[`filterName`]</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="filter[`filterName`]" data-endpoint="GETapi-admins" data-component="query"  hidden>
+<br>
+*string* - 
+Filter the resources by specifying *attribute name* or *query scope name*.
+The available filters for current endpoint are: `id`, `name`, `email`, `password`, `deleted_at`, `created_at`, `updated_at`.</p>
+</form>
+<h2>Create Resource.</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<p>Create a new admin resource.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://restful-example.web/api/admins" \
+    -H "Authorization: Bearer {YOUR_AUTH_KEY}" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"name":"odio","email":"franecki.destin@example.org","password":"corporis","role":"editor"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://restful-example.web/api/admins"
+);
+
+let headers = {
+    "Authorization": "Bearer {YOUR_AUTH_KEY}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "odio",
+    "email": "franecki.destin@example.org",
+    "password": "corporis",
+    "role": "editor"
+}
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+<div id="execution-results-POSTapi-admins" hidden>
+    <blockquote>Received response<span id="execution-response-status-POSTapi-admins"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-admins"></code></pre>
+</div>
+<div id="execution-error-POSTapi-admins" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-admins"></code></pre>
+</div>
+<form id="form-POSTapi-admins" data-method="POST" data-path="api/admins" data-authed="1" data-hasfiles="0" data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('POSTapi-admins', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-POSTapi-admins" onclick="tryItOut('POSTapi-admins');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-POSTapi-admins" onclick="cancelTryOut('POSTapi-admins');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-POSTapi-admins" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-black">POST</small>
+ <b><code>api/admins</code></b>
+</p>
+<p>
+<label id="auth-POSTapi-admins" hidden>Authorization header: <b><code>Bearer </code></b><input type="text" name="Authorization" data-prefix="Bearer " data-endpoint="POSTapi-admins" data-component="header"></label>
+</p>
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+<p>
+<b><code>name</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="name" data-endpoint="POSTapi-admins" data-component="body" required  hidden>
+<br>
+</p>
+<p>
+<b><code>email</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="email" data-endpoint="POSTapi-admins" data-component="body" required  hidden>
+<br>
+The value must be a valid email address.</p>
+<p>
+<b><code>password</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="password" data-endpoint="POSTapi-admins" data-component="body" required  hidden>
+<br>
+</p>
+<p>
+<b><code>role</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="role" data-endpoint="POSTapi-admins" data-component="body" required  hidden>
+<br>
+The value must be one of <code>superadmin</code> or <code>editor</code>.</p>
+
+</form>
+<h2>Show Resource.</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<p>Display a specific admin resource identified by the given id/key.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://restful-example.web/api/admins/" \
+    -H "Authorization: Bearer {YOUR_AUTH_KEY}" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://restful-example.web/api/admins/"
+);
+
+let headers = {
+    "Authorization": "Bearer {YOUR_AUTH_KEY}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "data": [
+        {
+            "id": 1,
+            "name": "Ut quasi molestiae odit voluptas fuga est magnam.",
+            "email": "uriah.west@example.org",
+            "role": "superadmin",
+            "deleted_at": null,
+            "created_at": "2021-03-01T07:00:05.000000Z",
+            "updated_at": "2021-03-01T07:00:05.000000Z"
+        },
+        {
+            "id": 2,
+            "name": "Et ea qui a cupiditate.",
+            "email": "kiley15@example.net",
+            "role": "editor",
+            "deleted_at": null,
+            "created_at": "2021-03-01T07:00:05.000000Z",
+            "updated_at": "2021-03-01T07:00:05.000000Z"
+        },
+        {
+            "id": 3,
+            "name": "Qui mollitia sit enim molestiae.",
+            "email": "judson.wyman@example.net",
+            "role": "editor",
+            "deleted_at": null,
+            "created_at": "2021-03-01T07:00:05.000000Z",
+            "updated_at": "2021-03-01T07:00:05.000000Z"
+        },
+        {
+            "id": 4,
+            "name": "Sunt enim vitae aut consequatur vel enim.",
+            "email": "marks.caesar@example.org",
+            "role": "editor",
+            "deleted_at": null,
+            "created_at": "2021-03-01T07:00:05.000000Z",
+            "updated_at": "2021-03-01T07:00:05.000000Z"
+        },
+        {
+            "id": 5,
+            "name": "In et quia qui voluptatem id quidem quo.",
+            "email": "deanna.borer@example.org",
+            "role": "editor",
+            "deleted_at": null,
+            "created_at": "2021-03-01T07:00:05.000000Z",
+            "updated_at": "2021-03-01T07:00:05.000000Z"
+        },
+        {
+            "id": 6,
+            "name": "Qui ipsam laudantium voluptatibus iste ullam omnis.",
+            "email": "malcolm10@example.net",
+            "role": "editor",
+            "deleted_at": null,
+            "created_at": "2021-03-01T07:00:05.000000Z",
+            "updated_at": "2021-03-01T07:00:05.000000Z"
+        },
+        {
+            "id": 7,
+            "name": "Pariatur quae architecto quam dolorem.",
+            "email": "lueilwitz.dorcas@example.com",
+            "role": "editor",
+            "deleted_at": null,
+            "created_at": "2021-03-01T07:00:05.000000Z",
+            "updated_at": "2021-03-01T07:00:05.000000Z"
+        },
+        {
+            "id": 8,
+            "name": "Tempora porro qui repudiandae sed.",
+            "email": "kuhlman.keara@example.org",
+            "role": "editor",
+            "deleted_at": null,
+            "created_at": "2021-03-01T07:00:05.000000Z",
+            "updated_at": "2021-03-01T07:00:05.000000Z"
+        },
+        {
+            "id": 9,
+            "name": "Beatae nemo praesentium sunt blanditiis et rerum in.",
+            "email": "magnolia.kuhic@example.net",
+            "role": "editor",
+            "deleted_at": null,
+            "created_at": "2021-03-01T07:00:05.000000Z",
+            "updated_at": "2021-03-01T07:00:05.000000Z"
+        },
+        {
+            "id": 10,
+            "name": "Tempora voluptate eum tenetur nesciunt recusandae.",
+            "email": "mollie92@example.net",
+            "role": "editor",
+            "deleted_at": null,
+            "created_at": "2021-03-01T07:00:05.000000Z",
+            "updated_at": "2021-03-01T07:00:05.000000Z"
+        },
+        {
+            "id": 11,
+            "name": "Quo quia earum voluptatibus delectus sint aut eos nam.",
+            "email": "shanelle80@example.com",
+            "role": "editor",
+            "deleted_at": null,
+            "created_at": "2021-03-01T07:00:05.000000Z",
+            "updated_at": "2021-03-01T07:00:05.000000Z"
+        },
+        {
+            "id": 12,
+            "name": "Dignissimos tempore inventore perspiciatis autem voluptate provident magni.",
+            "email": "rdach@example.org",
+            "role": "superadmin",
+            "deleted_at": null,
+            "created_at": "2021-03-01T07:01:04.000000Z",
+            "updated_at": "2021-03-01T07:01:04.000000Z"
+        },
+        {
+            "id": 13,
+            "name": "Voluptatem et aliquid ab necessitatibus dolores perspiciatis voluptas.",
+            "email": "mante.emelie@example.org",
+            "role": "editor",
+            "deleted_at": null,
+            "created_at": "2021-03-01T07:01:05.000000Z",
+            "updated_at": "2021-03-01T07:01:05.000000Z"
+        },
+        {
+            "id": 14,
+            "name": "A minus dolores dolores.",
+            "email": "sfarrell@example.org",
+            "role": "editor",
+            "deleted_at": null,
+            "created_at": "2021-03-01T07:01:05.000000Z",
+            "updated_at": "2021-03-01T07:01:05.000000Z"
+        },
+        {
+            "id": 15,
+            "name": "Qui voluptas et veniam soluta ipsam dolor facere nihil.",
+            "email": "lew95@example.net",
+            "role": "editor",
+            "deleted_at": null,
+            "created_at": "2021-03-01T07:01:05.000000Z",
+            "updated_at": "2021-03-01T07:01:05.000000Z"
+        },
+        {
+            "id": 16,
+            "name": "Quia eum illum maxime.",
+            "email": "lmueller@example.net",
+            "role": "editor",
+            "deleted_at": null,
+            "created_at": "2021-03-01T07:01:05.000000Z",
+            "updated_at": "2021-03-01T07:01:05.000000Z"
+        },
+        {
+            "id": 17,
+            "name": "Delectus voluptatem cupiditate veritatis aut doloribus accusantium nihil.",
+            "email": "marielle84@example.org",
+            "role": "editor",
+            "deleted_at": null,
+            "created_at": "2021-03-01T07:01:05.000000Z",
+            "updated_at": "2021-03-01T07:01:05.000000Z"
+        },
+        {
+            "id": 18,
+            "name": "Est molestiae ut officia omnis reiciendis voluptatibus.",
+            "email": "paul62@example.com",
+            "role": "editor",
+            "deleted_at": null,
+            "created_at": "2021-03-01T07:01:05.000000Z",
+            "updated_at": "2021-03-01T07:01:05.000000Z"
+        },
+        {
+            "id": 19,
+            "name": "Et est ut veritatis qui.",
+            "email": "yhermann@example.net",
+            "role": "editor",
+            "deleted_at": null,
+            "created_at": "2021-03-01T07:01:05.000000Z",
+            "updated_at": "2021-03-01T07:01:05.000000Z"
+        },
+        {
+            "id": 20,
+            "name": "Ipsam sint voluptatem error similique.",
+            "email": "cormier.jacquelyn@example.net",
+            "role": "editor",
+            "deleted_at": null,
+            "created_at": "2021-03-01T07:01:05.000000Z",
+            "updated_at": "2021-03-01T07:01:05.000000Z"
+        },
+        {
+            "id": 21,
+            "name": "Quia magni et vel et quas aut.",
+            "email": "rmurazik@example.net",
+            "role": "editor",
+            "deleted_at": null,
+            "created_at": "2021-03-01T07:01:05.000000Z",
+            "updated_at": "2021-03-01T07:01:05.000000Z"
+        },
+        {
+            "id": 22,
+            "name": "Iusto harum quia autem.",
+            "email": "sheldon.bauch@example.net",
+            "role": "editor",
+            "deleted_at": null,
+            "created_at": "2021-03-01T07:01:05.000000Z",
+            "updated_at": "2021-03-01T07:01:05.000000Z"
+        },
+        {
+            "id": 25,
+            "name": "Faizal",
+            "email": "faizal@suitmedia.com",
+            "role": "editor",
+            "deleted_at": null,
+            "created_at": "2021-03-01T08:00:21.000000Z",
+            "updated_at": "2021-03-01T08:00:21.000000Z"
+        }
+    ],
+    "links": {
+        "first": "http:\/\/localhost\/api\/admins?page%5Bnumber%5D=1",
+        "last": "http:\/\/localhost\/api\/admins?page%5Bnumber%5D=1",
+        "prev": null,
+        "next": null
+    },
+    "meta": {
+        "current_page": 1,
+        "from": 1,
+        "last_page": 1,
+        "links": [
+            {
+                "url": null,
+                "label": "&amp;laquo; Previous",
+                "active": false
+            },
+            {
+                "url": "http:\/\/localhost\/api\/admins?page%5Bnumber%5D=1",
+                "label": "1",
+                "active": true
+            },
+            {
+                "url": null,
+                "label": "Next &amp;raquo;",
+                "active": false
+            }
+        ],
+        "path": "http:\/\/localhost\/api\/admins",
+        "per_page": 30,
+        "to": 23,
+        "total": 23
+    }
+}</code></pre>
+<div id="execution-results-GETapi-admins--admin-" hidden>
+    <blockquote>Received response<span id="execution-response-status-GETapi-admins--admin-"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-admins--admin-"></code></pre>
+</div>
+<div id="execution-error-GETapi-admins--admin-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-admins--admin-"></code></pre>
+</div>
+<form id="form-GETapi-admins--admin-" data-method="GET" data-path="api/admins/{admin}" data-authed="1" data-hasfiles="0" data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-admins--admin-', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-GETapi-admins--admin-" onclick="tryItOut('GETapi-admins--admin-');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-GETapi-admins--admin-" onclick="cancelTryOut('GETapi-admins--admin-');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-GETapi-admins--admin-" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-green">GET</small>
+ <b><code>api/admins/{admin}</code></b>
+</p>
+<p>
+<label id="auth-GETapi-admins--admin-" hidden>Authorization header: <b><code>Bearer </code></b><input type="text" name="Authorization" data-prefix="Bearer " data-endpoint="GETapi-admins--admin-" data-component="header"></label>
+</p>
+<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+<p>
+<b><code>admin</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="admin" data-endpoint="GETapi-admins--admin-" data-component="url" required  hidden>
+<br>
+*integer* - 
+The identifier of a specific admin resource.</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>fields[admins]</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="fields[admins]" data-endpoint="GETapi-admins--admin-" data-component="query"  hidden>
+<br>
+*string* - 
+Comma-separated field/attribute names of the admin resource to include in the response document.
+The available fields for current endpoint are: `id`, `name`, `email`, `password`, `deleted_at`, `created_at`, `updated_at`.</p>
+<p>
+<b><code>include</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="include" data-endpoint="GETapi-admins--admin-" data-component="query"  hidden>
+<br>
+*string* - 
+Comma-separated relationship names to include in the response document.
+The available relationships for current endpoint are: `posts`.</p>
+</form>
+<h2>Update Resource.</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<p>Update a specific admin resource identified by the given id/key.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PUT \
+    "http://restful-example.web/api/admins/" \
+    -H "Authorization: Bearer {YOUR_AUTH_KEY}" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"name":"rerum","email":"willy63@example.com","password":"reprehenderit","role":"editor"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://restful-example.web/api/admins/"
+);
+
+let headers = {
+    "Authorization": "Bearer {YOUR_AUTH_KEY}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "rerum",
+    "email": "willy63@example.com",
+    "password": "reprehenderit",
+    "role": "editor"
+}
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+<div id="execution-results-PUTapi-admins--admin-" hidden>
+    <blockquote>Received response<span id="execution-response-status-PUTapi-admins--admin-"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-PUTapi-admins--admin-"></code></pre>
+</div>
+<div id="execution-error-PUTapi-admins--admin-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTapi-admins--admin-"></code></pre>
+</div>
+<form id="form-PUTapi-admins--admin-" data-method="PUT" data-path="api/admins/{admin}" data-authed="1" data-hasfiles="0" data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('PUTapi-admins--admin-', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-PUTapi-admins--admin-" onclick="tryItOut('PUTapi-admins--admin-');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-PUTapi-admins--admin-" onclick="cancelTryOut('PUTapi-admins--admin-');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-PUTapi-admins--admin-" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-darkblue">PUT</small>
+ <b><code>api/admins/{admin}</code></b>
+</p>
+<p>
+<small class="badge badge-purple">PATCH</small>
+ <b><code>api/admins/{admin}</code></b>
+</p>
+<p>
+<label id="auth-PUTapi-admins--admin-" hidden>Authorization header: <b><code>Bearer </code></b><input type="text" name="Authorization" data-prefix="Bearer " data-endpoint="PUTapi-admins--admin-" data-component="header"></label>
+</p>
+<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+<p>
+<b><code>admin</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="admin" data-endpoint="PUTapi-admins--admin-" data-component="url" required  hidden>
+<br>
+*integer* - 
+The identifier of a specific admin resource.</p>
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+<p>
+<b><code>name</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="name" data-endpoint="PUTapi-admins--admin-" data-component="body" required  hidden>
+<br>
+</p>
+<p>
+<b><code>email</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="email" data-endpoint="PUTapi-admins--admin-" data-component="body" required  hidden>
+<br>
+The value must be a valid email address.</p>
+<p>
+<b><code>password</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="password" data-endpoint="PUTapi-admins--admin-" data-component="body" required  hidden>
+<br>
+</p>
+<p>
+<b><code>role</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="role" data-endpoint="PUTapi-admins--admin-" data-component="body" required  hidden>
+<br>
+The value must be one of <code>superadmin</code> or <code>editor</code>.</p>
+
+</form>
+<h2>Delete Resource.</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<p>Delete a specific admin resource identified by the given id/key.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X DELETE \
+    "http://restful-example.web/api/admins/" \
+    -H "Authorization: Bearer {YOUR_AUTH_KEY}" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://restful-example.web/api/admins/"
+);
+
+let headers = {
+    "Authorization": "Bearer {YOUR_AUTH_KEY}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+<div id="execution-results-DELETEapi-admins--admin-" hidden>
+    <blockquote>Received response<span id="execution-response-status-DELETEapi-admins--admin-"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-admins--admin-"></code></pre>
+</div>
+<div id="execution-error-DELETEapi-admins--admin-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-admins--admin-"></code></pre>
+</div>
+<form id="form-DELETEapi-admins--admin-" data-method="DELETE" data-path="api/admins/{admin}" data-authed="1" data-hasfiles="0" data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('DELETEapi-admins--admin-', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-DELETEapi-admins--admin-" onclick="tryItOut('DELETEapi-admins--admin-');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-DELETEapi-admins--admin-" onclick="cancelTryOut('DELETEapi-admins--admin-');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-DELETEapi-admins--admin-" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-red">DELETE</small>
+ <b><code>api/admins/{admin}</code></b>
+</p>
+<p>
+<label id="auth-DELETEapi-admins--admin-" hidden>Authorization header: <b><code>Bearer </code></b><input type="text" name="Authorization" data-prefix="Bearer " data-endpoint="DELETEapi-admins--admin-" data-component="header"></label>
+</p>
+<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+<p>
+<b><code>admin</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="admin" data-endpoint="DELETEapi-admins--admin-" data-component="url" required  hidden>
+<br>
+*integer* - 
+The identifier of a specific admin resource.</p>
+</form><h1>Comment Management</h1>
+<p>API Endpoints for managing comments.</p>
+<h2>Resource Collection.</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<p>Display a collection of the comment resources in paginated document format.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://restful-example.web/api/comments" \
+    -H "Authorization: Bearer {YOUR_AUTH_KEY}" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://restful-example.web/api/comments"
+);
+
+let headers = {
+    "Authorization": "Bearer {YOUR_AUTH_KEY}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+<blockquote>
+<p>Example response (403):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "message": "This action is unauthorized."
+}</code></pre>
+<div id="execution-results-GETapi-comments" hidden>
+    <blockquote>Received response<span id="execution-response-status-GETapi-comments"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-comments"></code></pre>
+</div>
+<div id="execution-error-GETapi-comments" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-comments"></code></pre>
+</div>
+<form id="form-GETapi-comments" data-method="GET" data-path="api/comments" data-authed="1" data-hasfiles="0" data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-comments', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-GETapi-comments" onclick="tryItOut('GETapi-comments');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-GETapi-comments" onclick="cancelTryOut('GETapi-comments');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-GETapi-comments" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-green">GET</small>
+ <b><code>api/comments</code></b>
+</p>
+<p>
+<label id="auth-GETapi-comments" hidden>Authorization header: <b><code>Bearer </code></b><input type="text" name="Authorization" data-prefix="Bearer " data-endpoint="GETapi-comments" data-component="header"></label>
+</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>fields[comments]</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="fields[comments]" data-endpoint="GETapi-comments" data-component="query"  hidden>
+<br>
+*string* - 
+Comma-separated field/attribute names of the comment resource to include in the response document.
+The available fields for current endpoint are: `id`, `post_id`, `user_id`, `content`, `published`, `deleted_at`, `created_at`, `updated_at`.</p>
+<p>
+<b><code>fields[post]</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="fields[post]" data-endpoint="GETapi-comments" data-component="query"  hidden>
+<br>
+*string* - 
+Comma-separated field/attribute names of the post resource to include in the response document.
+The available fields for current endpoint are: `id`, `post_category_id`, `admin_id`, `title`, `description`, `content`, `published`, `deleted_at`, `created_at`, `updated_at`.</p>
+<p>
+<b><code>page[size]</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="page[size]" data-endpoint="GETapi-comments" data-component="query"  hidden>
+<br>
+*integer* - 
+Describe how many records to display in a collection.</p>
+<p>
+<b><code>page[number]</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+<input type="number" name="page[number]" data-endpoint="GETapi-comments" data-component="query"  hidden>
+<br>
+*integer* - 
+Describe the number of current page to display.</p>
+<p>
+<b><code>include</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="include" data-endpoint="GETapi-comments" data-component="query"  hidden>
+<br>
+*string* - 
+Comma-separated relationship names to include in the response document.
+The available relationships for current endpoint are: `post`.</p>
+<p>
+<b><code>sort</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="sort" data-endpoint="GETapi-comments" data-component="query"  hidden>
+<br>
+*string* - 
+Field/attribute to sort the resources in response document by.
+The available fields for sorting operation in current endpoint are: `id`, `post_id`, `user_id`, `content`, `published`, `deleted_at`, `created_at`, `updated_at`.</p>
+<p>
+<b><code>filter[`filterName`]</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="filter[`filterName`]" data-endpoint="GETapi-comments" data-component="query"  hidden>
+<br>
+*string* - 
+Filter the resources by specifying *attribute name* or *query scope name*.
+The available filters for current endpoint are: `id`, `post_id`, `user_id`, `content`, `published`, `deleted_at`, `created_at`, `updated_at`, `post.id`, `post.post_category_id`, `post.admin_id`, `post.title`, `post.description`, `post.content`, `post.published`, `post.deleted_at`, `post.created_at`, `post.updated_at`.</p>
+</form>
+<h2>Create Resource.</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<p>Create a new comment resource.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://restful-example.web/api/comments" \
+    -H "Authorization: Bearer {YOUR_AUTH_KEY}" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"post_id":12,"user_id":2,"content":"deleniti","published":false}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://restful-example.web/api/comments"
+);
+
+let headers = {
+    "Authorization": "Bearer {YOUR_AUTH_KEY}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "post_id": 12,
+    "user_id": 2,
+    "content": "deleniti",
+    "published": false
+}
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+<div id="execution-results-POSTapi-comments" hidden>
+    <blockquote>Received response<span id="execution-response-status-POSTapi-comments"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-comments"></code></pre>
+</div>
+<div id="execution-error-POSTapi-comments" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-comments"></code></pre>
+</div>
+<form id="form-POSTapi-comments" data-method="POST" data-path="api/comments" data-authed="1" data-hasfiles="0" data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('POSTapi-comments', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-POSTapi-comments" onclick="tryItOut('POSTapi-comments');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-POSTapi-comments" onclick="cancelTryOut('POSTapi-comments');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-POSTapi-comments" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-black">POST</small>
+ <b><code>api/comments</code></b>
+</p>
+<p>
+<label id="auth-POSTapi-comments" hidden>Authorization header: <b><code>Bearer </code></b><input type="text" name="Authorization" data-prefix="Bearer " data-endpoint="POSTapi-comments" data-component="header"></label>
+</p>
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+<p>
+<b><code>post_id</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+<input type="number" name="post_id" data-endpoint="POSTapi-comments" data-component="body" required  hidden>
+<br>
+</p>
+<p>
+<b><code>user_id</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+<input type="number" name="user_id" data-endpoint="POSTapi-comments" data-component="body" required  hidden>
+<br>
+</p>
+<p>
+<b><code>content</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="content" data-endpoint="POSTapi-comments" data-component="body" required  hidden>
+<br>
+</p>
+<p>
+<b><code>published</code></b>&nbsp;&nbsp;<small>boolean</small>  &nbsp;
+<label data-endpoint="POSTapi-comments" hidden><input type="radio" name="published" value="true" data-endpoint="POSTapi-comments" data-component="body" required ><code>true</code></label>
+<label data-endpoint="POSTapi-comments" hidden><input type="radio" name="published" value="false" data-endpoint="POSTapi-comments" data-component="body" required ><code>false</code></label>
+<br>
+</p>
+
+</form>
+<h2>Show Resource.</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<p>Display a specific comment resource identified by the given id/key.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://restful-example.web/api/comments/" \
+    -H "Authorization: Bearer {YOUR_AUTH_KEY}" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://restful-example.web/api/comments/"
+);
+
+let headers = {
+    "Authorization": "Bearer {YOUR_AUTH_KEY}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+<blockquote>
+<p>Example response (403):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "message": "This action is unauthorized."
+}</code></pre>
+<div id="execution-results-GETapi-comments--comment-" hidden>
+    <blockquote>Received response<span id="execution-response-status-GETapi-comments--comment-"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-comments--comment-"></code></pre>
+</div>
+<div id="execution-error-GETapi-comments--comment-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-comments--comment-"></code></pre>
+</div>
+<form id="form-GETapi-comments--comment-" data-method="GET" data-path="api/comments/{comment}" data-authed="1" data-hasfiles="0" data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-comments--comment-', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-GETapi-comments--comment-" onclick="tryItOut('GETapi-comments--comment-');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-GETapi-comments--comment-" onclick="cancelTryOut('GETapi-comments--comment-');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-GETapi-comments--comment-" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-green">GET</small>
+ <b><code>api/comments/{comment}</code></b>
+</p>
+<p>
+<label id="auth-GETapi-comments--comment-" hidden>Authorization header: <b><code>Bearer </code></b><input type="text" name="Authorization" data-prefix="Bearer " data-endpoint="GETapi-comments--comment-" data-component="header"></label>
+</p>
+<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+<p>
+<b><code>comment</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="comment" data-endpoint="GETapi-comments--comment-" data-component="url" required  hidden>
+<br>
+*integer* - 
+The identifier of a specific comment resource.</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>fields[comments]</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="fields[comments]" data-endpoint="GETapi-comments--comment-" data-component="query"  hidden>
+<br>
+*string* - 
+Comma-separated field/attribute names of the comment resource to include in the response document.
+The available fields for current endpoint are: `id`, `post_id`, `user_id`, `content`, `published`, `deleted_at`, `created_at`, `updated_at`.</p>
+<p>
+<b><code>fields[post]</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="fields[post]" data-endpoint="GETapi-comments--comment-" data-component="query"  hidden>
+<br>
+*string* - 
+Comma-separated field/attribute names of the post resource to include in the response document.
+The available fields for current endpoint are: `id`, `post_category_id`, `admin_id`, `title`, `description`, `content`, `published`, `deleted_at`, `created_at`, `updated_at`.</p>
+<p>
+<b><code>include</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="include" data-endpoint="GETapi-comments--comment-" data-component="query"  hidden>
+<br>
+*string* - 
+Comma-separated relationship names to include in the response document.
+The available relationships for current endpoint are: `post`.</p>
+</form>
+<h2>Update Resource.</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<p>Update a specific comment resource identified by the given id/key.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PUT \
+    "http://restful-example.web/api/comments/" \
+    -H "Authorization: Bearer {YOUR_AUTH_KEY}" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"post_id":10,"user_id":15,"content":"in","published":false}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://restful-example.web/api/comments/"
+);
+
+let headers = {
+    "Authorization": "Bearer {YOUR_AUTH_KEY}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "post_id": 10,
+    "user_id": 15,
+    "content": "in",
+    "published": false
+}
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+<div id="execution-results-PUTapi-comments--comment-" hidden>
+    <blockquote>Received response<span id="execution-response-status-PUTapi-comments--comment-"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-PUTapi-comments--comment-"></code></pre>
+</div>
+<div id="execution-error-PUTapi-comments--comment-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTapi-comments--comment-"></code></pre>
+</div>
+<form id="form-PUTapi-comments--comment-" data-method="PUT" data-path="api/comments/{comment}" data-authed="1" data-hasfiles="0" data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('PUTapi-comments--comment-', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-PUTapi-comments--comment-" onclick="tryItOut('PUTapi-comments--comment-');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-PUTapi-comments--comment-" onclick="cancelTryOut('PUTapi-comments--comment-');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-PUTapi-comments--comment-" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-darkblue">PUT</small>
+ <b><code>api/comments/{comment}</code></b>
+</p>
+<p>
+<small class="badge badge-purple">PATCH</small>
+ <b><code>api/comments/{comment}</code></b>
+</p>
+<p>
+<label id="auth-PUTapi-comments--comment-" hidden>Authorization header: <b><code>Bearer </code></b><input type="text" name="Authorization" data-prefix="Bearer " data-endpoint="PUTapi-comments--comment-" data-component="header"></label>
+</p>
+<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+<p>
+<b><code>comment</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="comment" data-endpoint="PUTapi-comments--comment-" data-component="url" required  hidden>
+<br>
+*integer* - 
+The identifier of a specific comment resource.</p>
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+<p>
+<b><code>post_id</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+<input type="number" name="post_id" data-endpoint="PUTapi-comments--comment-" data-component="body" required  hidden>
+<br>
+</p>
+<p>
+<b><code>user_id</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+<input type="number" name="user_id" data-endpoint="PUTapi-comments--comment-" data-component="body" required  hidden>
+<br>
+</p>
+<p>
+<b><code>content</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="content" data-endpoint="PUTapi-comments--comment-" data-component="body" required  hidden>
+<br>
+</p>
+<p>
+<b><code>published</code></b>&nbsp;&nbsp;<small>boolean</small>  &nbsp;
+<label data-endpoint="PUTapi-comments--comment-" hidden><input type="radio" name="published" value="true" data-endpoint="PUTapi-comments--comment-" data-component="body" required ><code>true</code></label>
+<label data-endpoint="PUTapi-comments--comment-" hidden><input type="radio" name="published" value="false" data-endpoint="PUTapi-comments--comment-" data-component="body" required ><code>false</code></label>
+<br>
+</p>
+
+</form>
+<h2>Delete Resource.</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<p>Delete a specific comment resource identified by the given id/key.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X DELETE \
+    "http://restful-example.web/api/comments/" \
+    -H "Authorization: Bearer {YOUR_AUTH_KEY}" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://restful-example.web/api/comments/"
+);
+
+let headers = {
+    "Authorization": "Bearer {YOUR_AUTH_KEY}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+<div id="execution-results-DELETEapi-comments--comment-" hidden>
+    <blockquote>Received response<span id="execution-response-status-DELETEapi-comments--comment-"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-comments--comment-"></code></pre>
+</div>
+<div id="execution-error-DELETEapi-comments--comment-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-comments--comment-"></code></pre>
+</div>
+<form id="form-DELETEapi-comments--comment-" data-method="DELETE" data-path="api/comments/{comment}" data-authed="1" data-hasfiles="0" data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('DELETEapi-comments--comment-', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-DELETEapi-comments--comment-" onclick="tryItOut('DELETEapi-comments--comment-');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-DELETEapi-comments--comment-" onclick="cancelTryOut('DELETEapi-comments--comment-');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-DELETEapi-comments--comment-" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-red">DELETE</small>
+ <b><code>api/comments/{comment}</code></b>
+</p>
+<p>
+<label id="auth-DELETEapi-comments--comment-" hidden>Authorization header: <b><code>Bearer </code></b><input type="text" name="Authorization" data-prefix="Bearer " data-endpoint="DELETEapi-comments--comment-" data-component="header"></label>
+</p>
+<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+<p>
+<b><code>comment</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="comment" data-endpoint="DELETEapi-comments--comment-" data-component="url" required  hidden>
+<br>
+*integer* - 
+The identifier of a specific comment resource.</p>
+</form><h1>Endpoints</h1>
+<h2>Return an empty response simply to trigger the storage of the CSRF cookie in the browser.</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://restful-example.web/sanctum/csrf-cookie" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://restful-example.web/sanctum/csrf-cookie"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+<div id="execution-results-GETsanctum-csrf-cookie" hidden>
+    <blockquote>Received response<span id="execution-response-status-GETsanctum-csrf-cookie"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-GETsanctum-csrf-cookie"></code></pre>
+</div>
+<div id="execution-error-GETsanctum-csrf-cookie" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETsanctum-csrf-cookie"></code></pre>
+</div>
+<form id="form-GETsanctum-csrf-cookie" data-method="GET" data-path="sanctum/csrf-cookie" data-authed="0" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('GETsanctum-csrf-cookie', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-GETsanctum-csrf-cookie" onclick="tryItOut('GETsanctum-csrf-cookie');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-GETsanctum-csrf-cookie" onclick="cancelTryOut('GETsanctum-csrf-cookie');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-GETsanctum-csrf-cookie" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-green">GET</small>
+ <b><code>sanctum/csrf-cookie</code></b>
+</p>
+</form>
+<h2>Get Token.</h2>
+<p>Return a token for requesting protected resources.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://restful-example.web/api/token" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"email":"norval92@example.org","password":"ullam"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://restful-example.web/api/token"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "email": "norval92@example.org",
+    "password": "ullam"
+}
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+<div id="execution-results-POSTapi-token" hidden>
+    <blockquote>Received response<span id="execution-response-status-POSTapi-token"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-token"></code></pre>
+</div>
+<div id="execution-error-POSTapi-token" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-token"></code></pre>
+</div>
+<form id="form-POSTapi-token" data-method="POST" data-path="api/token" data-authed="0" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('POSTapi-token', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-POSTapi-token" onclick="tryItOut('POSTapi-token');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-POSTapi-token" onclick="cancelTryOut('POSTapi-token');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-POSTapi-token" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-black">POST</small>
+ <b><code>api/token</code></b>
+</p>
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+<p>
+<b><code>email</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="email" data-endpoint="POSTapi-token" data-component="body" required  hidden>
+<br>
+The value must be a valid email address.</p>
+<p>
+<b><code>password</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="password" data-endpoint="POSTapi-token" data-component="body" required  hidden>
+<br>
+</p>
+
+</form>
+<h2>/</h2>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://restful-example.web/" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://restful-example.web/"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+    &lt;head&gt;
+        &lt;meta charset="utf-8"&gt;
+        &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+
+        &lt;title&gt;Laravel&lt;/title&gt;
+
+        &lt;!-- Fonts --&gt;
+        &lt;link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&amp;display=swap" rel="stylesheet"&gt;
+
+        &lt;!-- Styles --&gt;
+        &lt;style&gt;
+            /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}a{background-color:transparent}[hidden]{display:none}html{font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;line-height:1.5}*,:after,:before{box-sizing:border-box;border:0 solid #e2e8f0}a{color:inherit;text-decoration:inherit}svg,video{display:block;vertical-align:middle}video{max-width:100%;height:auto}.bg-white{--bg-opacity:1;background-color:#fff;background-color:rgba(255,255,255,var(--bg-opacity))}.bg-gray-100{--bg-opacity:1;background-color:#f7fafc;background-color:rgba(247,250,252,var(--bg-opacity))}.border-gray-200{--border-opacity:1;border-color:#edf2f7;border-color:rgba(237,242,247,var(--border-opacity))}.border-t{border-top-width:1px}.flex{display:flex}.grid{display:grid}.hidden{display:none}.items-center{align-items:center}.justify-center{justify-content:center}.font-semibold{font-weight:600}.h-5{height:1.25rem}.h-8{height:2rem}.h-16{height:4rem}.text-sm{font-size:.875rem}.text-lg{font-size:1.125rem}.leading-7{line-height:1.75rem}.mx-auto{margin-left:auto;margin-right:auto}.ml-1{margin-left:.25rem}.mt-2{margin-top:.5rem}.mr-2{margin-right:.5rem}.ml-2{margin-left:.5rem}.mt-4{margin-top:1rem}.ml-4{margin-left:1rem}.mt-8{margin-top:2rem}.ml-12{margin-left:3rem}.-mt-px{margin-top:-1px}.max-w-6xl{max-width:72rem}.min-h-screen{min-height:100vh}.overflow-hidden{overflow:hidden}.p-6{padding:1.5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.pt-8{padding-top:2rem}.fixed{position:fixed}.relative{position:relative}.top-0{top:0}.right-0{right:0}.shadow{box-shadow:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px 0 rgba(0,0,0,.06)}.text-center{text-align:center}.text-gray-200{--text-opacity:1;color:#edf2f7;color:rgba(237,242,247,var(--text-opacity))}.text-gray-300{--text-opacity:1;color:#e2e8f0;color:rgba(226,232,240,var(--text-opacity))}.text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}.text-gray-500{--text-opacity:1;color:#a0aec0;color:rgba(160,174,192,var(--text-opacity))}.text-gray-600{--text-opacity:1;color:#718096;color:rgba(113,128,150,var(--text-opacity))}.text-gray-700{--text-opacity:1;color:#4a5568;color:rgba(74,85,104,var(--text-opacity))}.text-gray-900{--text-opacity:1;color:#1a202c;color:rgba(26,32,44,var(--text-opacity))}.underline{text-decoration:underline}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.w-5{width:1.25rem}.w-8{width:2rem}.w-auto{width:auto}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}@media (min-width:640px){.sm\:rounded-lg{border-radius:.5rem}.sm\:block{display:block}.sm\:items-center{align-items:center}.sm\:justify-start{justify-content:flex-start}.sm\:justify-between{justify-content:space-between}.sm\:h-20{height:5rem}.sm\:ml-0{margin-left:0}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:pt-0{padding-top:0}.sm\:text-left{text-align:left}.sm\:text-right{text-align:right}}@media (min-width:768px){.md\:border-t-0{border-top-width:0}.md\:border-l{border-left-width:1px}.md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (min-width:1024px){.lg\:px-8{padding-left:2rem;padding-right:2rem}}@media (prefers-color-scheme:dark){.dark\:bg-gray-800{--bg-opacity:1;background-color:#2d3748;background-color:rgba(45,55,72,var(--bg-opacity))}.dark\:bg-gray-900{--bg-opacity:1;background-color:#1a202c;background-color:rgba(26,32,44,var(--bg-opacity))}.dark\:border-gray-700{--border-opacity:1;border-color:#4a5568;border-color:rgba(74,85,104,var(--border-opacity))}.dark\:text-white{--text-opacity:1;color:#fff;color:rgba(255,255,255,var(--text-opacity))}.dark\:text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}}
+        &lt;/style&gt;
+
+        &lt;style&gt;
+            body {
+                font-family: 'Nunito';
+            }
+        &lt;/style&gt;
+    &lt;/head&gt;
+    &lt;body class="antialiased"&gt;
+        &lt;div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0"&gt;
+
+            &lt;div class="max-w-6xl mx-auto sm:px-6 lg:px-8"&gt;
+                &lt;div class="flex justify-center pt-8 sm:justify-start sm:pt-0"&gt;
+                    &lt;svg viewBox="0 0 651 192" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-16 w-auto text-gray-700 sm:h-20"&gt;
+                        &lt;g clip-path="url(#clip0)" fill="#EF3B2D"&gt;
+                            &lt;path d="M248.032 44.676h-16.466v100.23h47.394v-14.748h-30.928V44.676zM337.091 87.202c-2.101-3.341-5.083-5.965-8.949-7.875-3.865-1.909-7.756-2.864-11.669-2.864-5.062 0-9.69.931-13.89 2.792-4.201 1.861-7.804 4.417-10.811 7.661-3.007 3.246-5.347 6.993-7.016 11.239-1.672 4.249-2.506 8.713-2.506 13.389 0 4.774.834 9.26 2.506 13.459 1.669 4.202 4.009 7.925 7.016 11.169 3.007 3.246 6.609 5.799 10.811 7.66 4.199 1.861 8.828 2.792 13.89 2.792 3.913 0 7.804-.955 11.669-2.863 3.866-1.908 6.849-4.533 8.949-7.875v9.021h15.607V78.182h-15.607v9.02zm-1.431 32.503c-.955 2.578-2.291 4.821-4.009 6.73-1.719 1.91-3.795 3.437-6.229 4.582-2.435 1.146-5.133 1.718-8.091 1.718-2.96 0-5.633-.572-8.019-1.718-2.387-1.146-4.438-2.672-6.156-4.582-1.719-1.909-3.032-4.152-3.938-6.73-.909-2.577-1.36-5.298-1.36-8.161 0-2.864.451-5.585 1.36-8.162.905-2.577 2.219-4.819 3.938-6.729 1.718-1.908 3.77-3.437 6.156-4.582 2.386-1.146 5.059-1.718 8.019-1.718 2.958 0 5.656.572 8.091 1.718 2.434 1.146 4.51 2.674 6.229 4.582 1.718 1.91 3.054 4.152 4.009 6.729.953 2.577 1.432 5.298 1.432 8.162-.001 2.863-.479 5.584-1.432 8.161zM463.954 87.202c-2.101-3.341-5.083-5.965-8.949-7.875-3.865-1.909-7.756-2.864-11.669-2.864-5.062 0-9.69.931-13.89 2.792-4.201 1.861-7.804 4.417-10.811 7.661-3.007 3.246-5.347 6.993-7.016 11.239-1.672 4.249-2.506 8.713-2.506 13.389 0 4.774.834 9.26 2.506 13.459 1.669 4.202 4.009 7.925 7.016 11.169 3.007 3.246 6.609 5.799 10.811 7.66 4.199 1.861 8.828 2.792 13.89 2.792 3.913 0 7.804-.955 11.669-2.863 3.866-1.908 6.849-4.533 8.949-7.875v9.021h15.607V78.182h-15.607v9.02zm-1.432 32.503c-.955 2.578-2.291 4.821-4.009 6.73-1.719 1.91-3.795 3.437-6.229 4.582-2.435 1.146-5.133 1.718-8.091 1.718-2.96 0-5.633-.572-8.019-1.718-2.387-1.146-4.438-2.672-6.156-4.582-1.719-1.909-3.032-4.152-3.938-6.73-.909-2.577-1.36-5.298-1.36-8.161 0-2.864.451-5.585 1.36-8.162.905-2.577 2.219-4.819 3.938-6.729 1.718-1.908 3.77-3.437 6.156-4.582 2.386-1.146 5.059-1.718 8.019-1.718 2.958 0 5.656.572 8.091 1.718 2.434 1.146 4.51 2.674 6.229 4.582 1.718 1.91 3.054 4.152 4.009 6.729.953 2.577 1.432 5.298 1.432 8.162 0 2.863-.479 5.584-1.432 8.161zM650.772 44.676h-15.606v100.23h15.606V44.676zM365.013 144.906h15.607V93.538h26.776V78.182h-42.383v66.724zM542.133 78.182l-19.616 51.096-19.616-51.096h-15.808l25.617 66.724h19.614l25.617-66.724h-15.808zM591.98 76.466c-19.112 0-34.239 15.706-34.239 35.079 0 21.416 14.641 35.079 36.239 35.079 12.088 0 19.806-4.622 29.234-14.688l-10.544-8.158c-.006.008-7.958 10.449-19.832 10.449-13.802 0-19.612-11.127-19.612-16.884h51.777c2.72-22.043-11.772-40.877-33.023-40.877zm-18.713 29.28c.12-1.284 1.917-16.884 18.589-16.884 16.671 0 18.697 15.598 18.813 16.884h-37.402zM184.068 43.892c-.024-.088-.073-.165-.104-.25-.058-.157-.108-.316-.191-.46-.056-.097-.137-.176-.203-.265-.087-.117-.161-.242-.265-.345-.085-.086-.194-.148-.29-.223-.109-.085-.206-.182-.327-.252l-.002-.001-.002-.002-35.648-20.524a2.971 2.971 0 00-2.964 0l-35.647 20.522-.002.002-.002.001c-.121.07-.219.167-.327.252-.096.075-.205.138-.29.223-.103.103-.178.228-.265.345-.066.089-.147.169-.203.265-.083.144-.133.304-.191.46-.031.085-.08.162-.104.25-.067.249-.103.51-.103.776v38.979l-29.706 17.103V24.493a3 3 0 00-.103-.776c-.024-.088-.073-.165-.104-.25-.058-.157-.108-.316-.191-.46-.056-.097-.137-.176-.203-.265-.087-.117-.161-.242-.265-.345-.085-.086-.194-.148-.29-.223-.109-.085-.206-.182-.327-.252l-.002-.001-.002-.002L40.098 1.396a2.971 2.971 0 00-2.964 0L1.487 21.919l-.002.002-.002.001c-.121.07-.219.167-.327.252-.096.075-.205.138-.29.223-.103.103-.178.228-.265.345-.066.089-.147.169-.203.265-.083.144-.133.304-.191.46-.031.085-.08.162-.104.25-.067.249-.103.51-.103.776v122.09c0 1.063.568 2.044 1.489 2.575l71.293 41.045c.156.089.324.143.49.202.078.028.15.074.23.095a2.98 2.98 0 001.524 0c.069-.018.132-.059.2-.083.176-.061.354-.119.519-.214l71.293-41.045a2.971 2.971 0 001.489-2.575v-38.979l34.158-19.666a2.971 2.971 0 001.489-2.575V44.666a3.075 3.075 0 00-.106-.774zM74.255 143.167l-29.648-16.779 31.136-17.926.001-.001 34.164-19.669 29.674 17.084-21.772 12.428-43.555 24.863zm68.329-76.259v33.841l-12.475-7.182-17.231-9.92V49.806l12.475 7.182 17.231 9.92zm2.97-39.335l29.693 17.095-29.693 17.095-29.693-17.095 29.693-17.095zM54.06 114.089l-12.475 7.182V46.733l17.231-9.92 12.475-7.182v74.537l-17.231 9.921zM38.614 7.398l29.693 17.095-29.693 17.095L8.921 24.493 38.614 7.398zM5.938 29.632l12.475 7.182 17.231 9.92v79.676l.001.005-.001.006c0 .114.032.221.045.333.017.146.021.294.059.434l.002.007c.032.117.094.222.14.334.051.124.088.255.156.371a.036.036 0 00.004.009c.061.105.149.191.222.288.081.105.149.22.244.314l.008.01c.084.083.19.142.284.215.106.083.202.178.32.247l.013.005.011.008 34.139 19.321v34.175L5.939 144.867V29.632h-.001zm136.646 115.235l-65.352 37.625V148.31l48.399-27.628 16.953-9.677v33.862zm35.646-61.22l-29.706 17.102V66.908l17.231-9.92 12.475-7.182v33.841z"/&gt;
+                        &lt;/g&gt;
+                    &lt;/svg&gt;
+                &lt;/div&gt;
+
+                &lt;div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg"&gt;
+                    &lt;div class="grid grid-cols-1 md:grid-cols-2"&gt;
+                        &lt;div class="p-6"&gt;
+                            &lt;div class="flex items-center"&gt;
+                                &lt;svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"&gt;&lt;path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"&gt;&lt;/path&gt;&lt;/svg&gt;
+                                &lt;div class="ml-4 text-lg leading-7 font-semibold"&gt;&lt;a href="https://laravel.com/docs" class="underline text-gray-900 dark:text-white"&gt;Documentation&lt;/a&gt;&lt;/div&gt;
+                            &lt;/div&gt;
+
+                            &lt;div class="ml-12"&gt;
+                                &lt;div class="mt-2 text-gray-600 dark:text-gray-400 text-sm"&gt;
+                                    Laravel has wonderful, thorough documentation covering every aspect of the framework. Whether you are new to the framework or have previous experience with Laravel, we recommend reading all of the documentation from beginning to end.
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l"&gt;
+                            &lt;div class="flex items-center"&gt;
+                                &lt;svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"&gt;&lt;path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"&gt;&lt;/path&gt;&lt;path d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"&gt;&lt;/path&gt;&lt;/svg&gt;
+                                &lt;div class="ml-4 text-lg leading-7 font-semibold"&gt;&lt;a href="https://laracasts.com" class="underline text-gray-900 dark:text-white"&gt;Laracasts&lt;/a&gt;&lt;/div&gt;
+                            &lt;/div&gt;
+
+                            &lt;div class="ml-12"&gt;
+                                &lt;div class="mt-2 text-gray-600 dark:text-gray-400 text-sm"&gt;
+                                    Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class="p-6 border-t border-gray-200 dark:border-gray-700"&gt;
+                            &lt;div class="flex items-center"&gt;
+                                &lt;svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"&gt;&lt;path d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"&gt;&lt;/path&gt;&lt;/svg&gt;
+                                &lt;div class="ml-4 text-lg leading-7 font-semibold"&gt;&lt;a href="https://laravel-news.com/" class="underline text-gray-900 dark:text-white"&gt;Laravel News&lt;/a&gt;&lt;/div&gt;
+                            &lt;/div&gt;
+
+                            &lt;div class="ml-12"&gt;
+                                &lt;div class="mt-2 text-gray-600 dark:text-gray-400 text-sm"&gt;
+                                    Laravel News is a community driven portal and newsletter aggregating all of the latest and most important news in the Laravel ecosystem, including new package releases and tutorials.
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+
+                        &lt;div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l"&gt;
+                            &lt;div class="flex items-center"&gt;
+                                &lt;svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"&gt;&lt;path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"&gt;&lt;/path&gt;&lt;/svg&gt;
+                                &lt;div class="ml-4 text-lg leading-7 font-semibold text-gray-900 dark:text-white"&gt;Vibrant Ecosystem&lt;/div&gt;
+                            &lt;/div&gt;
+
+                            &lt;div class="ml-12"&gt;
+                                &lt;div class="mt-2 text-gray-600 dark:text-gray-400 text-sm"&gt;
+                                    Laravel's robust library of first-party tools and libraries, such as &lt;a href="https://forge.laravel.com" class="underline"&gt;Forge&lt;/a&gt;, &lt;a href="https://vapor.laravel.com" class="underline"&gt;Vapor&lt;/a&gt;, &lt;a href="https://nova.laravel.com" class="underline"&gt;Nova&lt;/a&gt;, and &lt;a href="https://envoyer.io" class="underline"&gt;Envoyer&lt;/a&gt; help you take your projects to the next level. Pair them with powerful open source libraries like &lt;a href="https://laravel.com/docs/billing" class="underline"&gt;Cashier&lt;/a&gt;, &lt;a href="https://laravel.com/docs/dusk" class="underline"&gt;Dusk&lt;/a&gt;, &lt;a href="https://laravel.com/docs/broadcasting" class="underline"&gt;Echo&lt;/a&gt;, &lt;a href="https://laravel.com/docs/horizon" class="underline"&gt;Horizon&lt;/a&gt;, &lt;a href="https://laravel.com/docs/sanctum" class="underline"&gt;Sanctum&lt;/a&gt;, &lt;a href="https://laravel.com/docs/telescope" class="underline"&gt;Telescope&lt;/a&gt;, and more.
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+
+                &lt;div class="flex justify-center mt-4 sm:items-center sm:justify-between"&gt;
+                    &lt;div class="text-center text-sm text-gray-500 sm:text-left"&gt;
+                        &lt;div class="flex items-center"&gt;
+                            &lt;svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor" class="-mt-px w-5 h-5 text-gray-400"&gt;
+                                &lt;path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"&gt;&lt;/path&gt;
+                            &lt;/svg&gt;
+
+                            &lt;a href="https://laravel.bigcartel.com" class="ml-1 underline"&gt;
+                                Shop
+                            &lt;/a&gt;
+
+                            &lt;svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="ml-4 -mt-px w-5 h-5 text-gray-400"&gt;
+                                &lt;path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"&gt;&lt;/path&gt;
+                            &lt;/svg&gt;
+
+                            &lt;a href="https://github.com/sponsors/taylorotwell" class="ml-1 underline"&gt;
+                                Sponsor
+                            &lt;/a&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0"&gt;
+                        Laravel v8.29.0 (PHP v7.4.10)
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<div id="execution-results-GET-" hidden>
+    <blockquote>Received response<span id="execution-response-status-GET-"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-GET-"></code></pre>
+</div>
+<div id="execution-error-GET-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GET-"></code></pre>
+</div>
+<form id="form-GET-" data-method="GET" data-path="/" data-authed="0" data-hasfiles="0" data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('GET-', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-GET-" onclick="tryItOut('GET-');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-GET-" onclick="cancelTryOut('GET-');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-GET-" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-green">GET</small>
+ <b><code>/</code></b>
+</p>
+</form><h1>Post Category Management</h1>
+<p>API Endpoints for managing post categories.</p>
+<h2>Resource Collection.</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<p>Display a collection of the post category resources in paginated document format.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://restful-example.web/api/post_categories" \
+    -H "Authorization: Bearer {YOUR_AUTH_KEY}" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://restful-example.web/api/post_categories"
+);
+
+let headers = {
+    "Authorization": "Bearer {YOUR_AUTH_KEY}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+<blockquote>
+<p>Example response (403):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "message": "This action is unauthorized."
+}</code></pre>
+<div id="execution-results-GETapi-post_categories" hidden>
+    <blockquote>Received response<span id="execution-response-status-GETapi-post_categories"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-post_categories"></code></pre>
+</div>
+<div id="execution-error-GETapi-post_categories" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-post_categories"></code></pre>
+</div>
+<form id="form-GETapi-post_categories" data-method="GET" data-path="api/post_categories" data-authed="1" data-hasfiles="0" data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-post_categories', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-GETapi-post_categories" onclick="tryItOut('GETapi-post_categories');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-GETapi-post_categories" onclick="cancelTryOut('GETapi-post_categories');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-GETapi-post_categories" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-green">GET</small>
+ <b><code>api/post_categories</code></b>
+</p>
+<p>
+<label id="auth-GETapi-post_categories" hidden>Authorization header: <b><code>Bearer </code></b><input type="text" name="Authorization" data-prefix="Bearer " data-endpoint="GETapi-post_categories" data-component="header"></label>
+</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>fields[post_categories]</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="fields[post_categories]" data-endpoint="GETapi-post_categories" data-component="query"  hidden>
+<br>
+*string* - 
+Comma-separated field/attribute names of the post_category resource to include in the response document.
+The available fields for current endpoint are: `id`, `name`, `deleted_at`, `created_at`, `updated_at`.</p>
+<p>
+<b><code>page[size]</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="page[size]" data-endpoint="GETapi-post_categories" data-component="query"  hidden>
+<br>
+*integer* - 
+Describe how many records to display in a collection.</p>
+<p>
+<b><code>page[number]</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+<input type="number" name="page[number]" data-endpoint="GETapi-post_categories" data-component="query"  hidden>
+<br>
+*integer* - 
+Describe the number of current page to display.</p>
+<p>
+<b><code>include</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="include" data-endpoint="GETapi-post_categories" data-component="query"  hidden>
+<br>
+*string* - 
+Comma-separated relationship names to include in the response document.
+The available relationships for current endpoint are: `posts`.</p>
+<p>
+<b><code>sort</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="sort" data-endpoint="GETapi-post_categories" data-component="query"  hidden>
+<br>
+*string* - 
+Field/attribute to sort the resources in response document by.
+The available fields for sorting operation in current endpoint are: `id`, `name`, `deleted_at`, `created_at`, `updated_at`.</p>
+<p>
+<b><code>filter[`filterName`]</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="filter[`filterName`]" data-endpoint="GETapi-post_categories" data-component="query"  hidden>
+<br>
+*string* - 
+Filter the resources by specifying *attribute name* or *query scope name*.
+The available filters for current endpoint are: `id`, `name`, `deleted_at`, `created_at`, `updated_at`.</p>
+</form>
+<h2>Create Resource.</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<p>Create a new post category resource.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://restful-example.web/api/post_categories" \
+    -H "Authorization: Bearer {YOUR_AUTH_KEY}" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"name":"sequi"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://restful-example.web/api/post_categories"
+);
+
+let headers = {
+    "Authorization": "Bearer {YOUR_AUTH_KEY}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "sequi"
+}
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+<div id="execution-results-POSTapi-post_categories" hidden>
+    <blockquote>Received response<span id="execution-response-status-POSTapi-post_categories"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-post_categories"></code></pre>
+</div>
+<div id="execution-error-POSTapi-post_categories" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-post_categories"></code></pre>
+</div>
+<form id="form-POSTapi-post_categories" data-method="POST" data-path="api/post_categories" data-authed="1" data-hasfiles="0" data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('POSTapi-post_categories', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-POSTapi-post_categories" onclick="tryItOut('POSTapi-post_categories');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-POSTapi-post_categories" onclick="cancelTryOut('POSTapi-post_categories');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-POSTapi-post_categories" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-black">POST</small>
+ <b><code>api/post_categories</code></b>
+</p>
+<p>
+<label id="auth-POSTapi-post_categories" hidden>Authorization header: <b><code>Bearer </code></b><input type="text" name="Authorization" data-prefix="Bearer " data-endpoint="POSTapi-post_categories" data-component="header"></label>
+</p>
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+<p>
+<b><code>name</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="name" data-endpoint="POSTapi-post_categories" data-component="body" required  hidden>
+<br>
+</p>
+
+</form>
+<h2>Show Resource.</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<p>Display a specific post category resource identified by the given id/key.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://restful-example.web/api/post_categories/eum" \
+    -H "Authorization: Bearer {YOUR_AUTH_KEY}" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://restful-example.web/api/post_categories/eum"
+);
+
+let headers = {
+    "Authorization": "Bearer {YOUR_AUTH_KEY}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+<blockquote>
+<p>Example response (404):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "message": "No query results for model [App\\Models\\PostCategory] eum"
+}</code></pre>
+<div id="execution-results-GETapi-post_categories--post_category-" hidden>
+    <blockquote>Received response<span id="execution-response-status-GETapi-post_categories--post_category-"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-post_categories--post_category-"></code></pre>
+</div>
+<div id="execution-error-GETapi-post_categories--post_category-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-post_categories--post_category-"></code></pre>
+</div>
+<form id="form-GETapi-post_categories--post_category-" data-method="GET" data-path="api/post_categories/{post_category}" data-authed="1" data-hasfiles="0" data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-post_categories--post_category-', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-GETapi-post_categories--post_category-" onclick="tryItOut('GETapi-post_categories--post_category-');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-GETapi-post_categories--post_category-" onclick="cancelTryOut('GETapi-post_categories--post_category-');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-GETapi-post_categories--post_category-" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-green">GET</small>
+ <b><code>api/post_categories/{post_category}</code></b>
+</p>
+<p>
+<label id="auth-GETapi-post_categories--post_category-" hidden>Authorization header: <b><code>Bearer </code></b><input type="text" name="Authorization" data-prefix="Bearer " data-endpoint="GETapi-post_categories--post_category-" data-component="header"></label>
+</p>
+<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+<p>
+<b><code>post_category</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="post_category" data-endpoint="GETapi-post_categories--post_category-" data-component="url" required  hidden>
+<br>
+</p>
+<p>
+<b><code>postCategory</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="postCategory" data-endpoint="GETapi-post_categories--post_category-" data-component="url" required  hidden>
+<br>
+*integer* - 
+The identifier of a specific post category resource.</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>fields[post_categories]</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="fields[post_categories]" data-endpoint="GETapi-post_categories--post_category-" data-component="query"  hidden>
+<br>
+*string* - 
+Comma-separated field/attribute names of the post_category resource to include in the response document.
+The available fields for current endpoint are: `id`, `name`, `deleted_at`, `created_at`, `updated_at`.</p>
+<p>
+<b><code>include</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="include" data-endpoint="GETapi-post_categories--post_category-" data-component="query"  hidden>
+<br>
+*string* - 
+Comma-separated relationship names to include in the response document.
+The available relationships for current endpoint are: `posts`.</p>
+</form>
+<h2>Update Resource.</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<p>Update a specific post category resource identified by the given id/key.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PUT \
+    "http://restful-example.web/api/post_categories/nihil" \
+    -H "Authorization: Bearer {YOUR_AUTH_KEY}" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"name":"et"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://restful-example.web/api/post_categories/nihil"
+);
+
+let headers = {
+    "Authorization": "Bearer {YOUR_AUTH_KEY}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "et"
+}
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+<div id="execution-results-PUTapi-post_categories--post_category-" hidden>
+    <blockquote>Received response<span id="execution-response-status-PUTapi-post_categories--post_category-"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-PUTapi-post_categories--post_category-"></code></pre>
+</div>
+<div id="execution-error-PUTapi-post_categories--post_category-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTapi-post_categories--post_category-"></code></pre>
+</div>
+<form id="form-PUTapi-post_categories--post_category-" data-method="PUT" data-path="api/post_categories/{post_category}" data-authed="1" data-hasfiles="0" data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('PUTapi-post_categories--post_category-', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-PUTapi-post_categories--post_category-" onclick="tryItOut('PUTapi-post_categories--post_category-');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-PUTapi-post_categories--post_category-" onclick="cancelTryOut('PUTapi-post_categories--post_category-');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-PUTapi-post_categories--post_category-" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-darkblue">PUT</small>
+ <b><code>api/post_categories/{post_category}</code></b>
+</p>
+<p>
+<small class="badge badge-purple">PATCH</small>
+ <b><code>api/post_categories/{post_category}</code></b>
+</p>
+<p>
+<label id="auth-PUTapi-post_categories--post_category-" hidden>Authorization header: <b><code>Bearer </code></b><input type="text" name="Authorization" data-prefix="Bearer " data-endpoint="PUTapi-post_categories--post_category-" data-component="header"></label>
+</p>
+<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+<p>
+<b><code>post_category</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="post_category" data-endpoint="PUTapi-post_categories--post_category-" data-component="url" required  hidden>
+<br>
+</p>
+<p>
+<b><code>postCategory</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="postCategory" data-endpoint="PUTapi-post_categories--post_category-" data-component="url" required  hidden>
+<br>
+*integer* - 
+The identifier of a specific post category resource.</p>
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+<p>
+<b><code>name</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="name" data-endpoint="PUTapi-post_categories--post_category-" data-component="body" required  hidden>
+<br>
+</p>
+
+</form>
+<h2>Delete Resource.</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<p>Delete a specific post category resource identified by the given id/key.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X DELETE \
+    "http://restful-example.web/api/post_categories/vel" \
+    -H "Authorization: Bearer {YOUR_AUTH_KEY}" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://restful-example.web/api/post_categories/vel"
+);
+
+let headers = {
+    "Authorization": "Bearer {YOUR_AUTH_KEY}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+<div id="execution-results-DELETEapi-post_categories--post_category-" hidden>
+    <blockquote>Received response<span id="execution-response-status-DELETEapi-post_categories--post_category-"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-post_categories--post_category-"></code></pre>
+</div>
+<div id="execution-error-DELETEapi-post_categories--post_category-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-post_categories--post_category-"></code></pre>
+</div>
+<form id="form-DELETEapi-post_categories--post_category-" data-method="DELETE" data-path="api/post_categories/{post_category}" data-authed="1" data-hasfiles="0" data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('DELETEapi-post_categories--post_category-', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-DELETEapi-post_categories--post_category-" onclick="tryItOut('DELETEapi-post_categories--post_category-');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-DELETEapi-post_categories--post_category-" onclick="cancelTryOut('DELETEapi-post_categories--post_category-');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-DELETEapi-post_categories--post_category-" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-red">DELETE</small>
+ <b><code>api/post_categories/{post_category}</code></b>
+</p>
+<p>
+<label id="auth-DELETEapi-post_categories--post_category-" hidden>Authorization header: <b><code>Bearer </code></b><input type="text" name="Authorization" data-prefix="Bearer " data-endpoint="DELETEapi-post_categories--post_category-" data-component="header"></label>
+</p>
+<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+<p>
+<b><code>post_category</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="post_category" data-endpoint="DELETEapi-post_categories--post_category-" data-component="url" required  hidden>
+<br>
+</p>
+<p>
+<b><code>postCategory</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="postCategory" data-endpoint="DELETEapi-post_categories--post_category-" data-component="url" required  hidden>
+<br>
+*integer* - 
+The identifier of a specific post category resource.</p>
+</form><h1>Post Management</h1>
+<p>API Endpoints for managing posts.</p>
+<h2>Resource Collection.</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<p>Display a collection of the post resources in paginated document format.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://restful-example.web/api/posts" \
+    -H "Authorization: Bearer {YOUR_AUTH_KEY}" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://restful-example.web/api/posts"
+);
+
+let headers = {
+    "Authorization": "Bearer {YOUR_AUTH_KEY}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+<blockquote>
+<p>Example response (403):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "message": "This action is unauthorized."
+}</code></pre>
+<div id="execution-results-GETapi-posts" hidden>
+    <blockquote>Received response<span id="execution-response-status-GETapi-posts"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-posts"></code></pre>
+</div>
+<div id="execution-error-GETapi-posts" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-posts"></code></pre>
+</div>
+<form id="form-GETapi-posts" data-method="GET" data-path="api/posts" data-authed="1" data-hasfiles="0" data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-posts', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-GETapi-posts" onclick="tryItOut('GETapi-posts');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-GETapi-posts" onclick="cancelTryOut('GETapi-posts');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-GETapi-posts" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-green">GET</small>
+ <b><code>api/posts</code></b>
+</p>
+<p>
+<label id="auth-GETapi-posts" hidden>Authorization header: <b><code>Bearer </code></b><input type="text" name="Authorization" data-prefix="Bearer " data-endpoint="GETapi-posts" data-component="header"></label>
+</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>fields[posts]</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="fields[posts]" data-endpoint="GETapi-posts" data-component="query"  hidden>
+<br>
+*string* - 
+Comma-separated field/attribute names of the post resource to include in the response document.
+The available fields for current endpoint are: `id`, `post_category_id`, `admin_id`, `title`, `description`, `content`, `published`, `deleted_at`, `created_at`, `updated_at`.</p>
+<p>
+<b><code>fields[postCategory]</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="fields[postCategory]" data-endpoint="GETapi-posts" data-component="query"  hidden>
+<br>
+*string* - 
+Comma-separated field/attribute names of the post_category resource to include in the response document.
+The available fields for current endpoint are: `id`, `name`, `deleted_at`, `created_at`, `updated_at`.</p>
+<p>
+<b><code>fields[admin]</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="fields[admin]" data-endpoint="GETapi-posts" data-component="query"  hidden>
+<br>
+*string* - 
+Comma-separated field/attribute names of the admin resource to include in the response document.
+The available fields for current endpoint are: `id`, `name`, `email`, `password`, `deleted_at`, `created_at`, `updated_at`.</p>
+<p>
+<b><code>page[size]</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="page[size]" data-endpoint="GETapi-posts" data-component="query"  hidden>
+<br>
+*integer* - 
+Describe how many records to display in a collection.</p>
+<p>
+<b><code>page[number]</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+<input type="number" name="page[number]" data-endpoint="GETapi-posts" data-component="query"  hidden>
+<br>
+*integer* - 
+Describe the number of current page to display.</p>
+<p>
+<b><code>include</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="include" data-endpoint="GETapi-posts" data-component="query"  hidden>
+<br>
+*string* - 
+Comma-separated relationship names to include in the response document.
+The available relationships for current endpoint are: `postCategory`, `admin`, `comments`, `postTags`, `tags`.</p>
+<p>
+<b><code>sort</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="sort" data-endpoint="GETapi-posts" data-component="query"  hidden>
+<br>
+*string* - 
+Field/attribute to sort the resources in response document by.
+The available fields for sorting operation in current endpoint are: `id`, `post_category_id`, `admin_id`, `title`, `description`, `content`, `published`, `deleted_at`, `created_at`, `updated_at`.</p>
+<p>
+<b><code>filter[`filterName`]</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="filter[`filterName`]" data-endpoint="GETapi-posts" data-component="query"  hidden>
+<br>
+*string* - 
+Filter the resources by specifying *attribute name* or *query scope name*.
+The available filters for current endpoint are: `id`, `post_category_id`, `admin_id`, `title`, `description`, `content`, `published`, `deleted_at`, `created_at`, `updated_at`, `postCategory.id`, `postCategory.name`, `postCategory.deleted_at`, `postCategory.created_at`, `postCategory.updated_at`, `admin.id`, `admin.name`, `admin.email`, `admin.password`, `admin.deleted_at`, `admin.created_at`, `admin.updated_at`.</p>
+</form>
+<h2>Create Resource.</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<p>Create a new post resource.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://restful-example.web/api/posts" \
+    -H "Authorization: Bearer {YOUR_AUTH_KEY}" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"post_category_id":5,"title":"et","description":"illo","content":"ut","published":false}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://restful-example.web/api/posts"
+);
+
+let headers = {
+    "Authorization": "Bearer {YOUR_AUTH_KEY}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "post_category_id": 5,
+    "title": "et",
+    "description": "illo",
+    "content": "ut",
+    "published": false
+}
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+<div id="execution-results-POSTapi-posts" hidden>
+    <blockquote>Received response<span id="execution-response-status-POSTapi-posts"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-posts"></code></pre>
+</div>
+<div id="execution-error-POSTapi-posts" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-posts"></code></pre>
+</div>
+<form id="form-POSTapi-posts" data-method="POST" data-path="api/posts" data-authed="1" data-hasfiles="0" data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('POSTapi-posts', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-POSTapi-posts" onclick="tryItOut('POSTapi-posts');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-POSTapi-posts" onclick="cancelTryOut('POSTapi-posts');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-POSTapi-posts" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-black">POST</small>
+ <b><code>api/posts</code></b>
+</p>
+<p>
+<label id="auth-POSTapi-posts" hidden>Authorization header: <b><code>Bearer </code></b><input type="text" name="Authorization" data-prefix="Bearer " data-endpoint="POSTapi-posts" data-component="header"></label>
+</p>
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+<p>
+<b><code>post_category_id</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+<input type="number" name="post_category_id" data-endpoint="POSTapi-posts" data-component="body" required  hidden>
+<br>
+</p>
+<p>
+<b><code>title</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="title" data-endpoint="POSTapi-posts" data-component="body" required  hidden>
+<br>
+</p>
+<p>
+<b><code>description</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="description" data-endpoint="POSTapi-posts" data-component="body" required  hidden>
+<br>
+</p>
+<p>
+<b><code>content</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="content" data-endpoint="POSTapi-posts" data-component="body" required  hidden>
+<br>
+</p>
+<p>
+<b><code>published</code></b>&nbsp;&nbsp;<small>boolean</small>  &nbsp;
+<label data-endpoint="POSTapi-posts" hidden><input type="radio" name="published" value="true" data-endpoint="POSTapi-posts" data-component="body" required ><code>true</code></label>
+<label data-endpoint="POSTapi-posts" hidden><input type="radio" name="published" value="false" data-endpoint="POSTapi-posts" data-component="body" required ><code>false</code></label>
+<br>
+</p>
+
+</form>
+<h2>Show Resource.</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<p>Display a specific post resource identified by the given id/key.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://restful-example.web/api/posts/" \
+    -H "Authorization: Bearer {YOUR_AUTH_KEY}" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://restful-example.web/api/posts/"
+);
+
+let headers = {
+    "Authorization": "Bearer {YOUR_AUTH_KEY}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+<blockquote>
+<p>Example response (403):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "message": "This action is unauthorized."
+}</code></pre>
+<div id="execution-results-GETapi-posts--post-" hidden>
+    <blockquote>Received response<span id="execution-response-status-GETapi-posts--post-"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-posts--post-"></code></pre>
+</div>
+<div id="execution-error-GETapi-posts--post-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-posts--post-"></code></pre>
+</div>
+<form id="form-GETapi-posts--post-" data-method="GET" data-path="api/posts/{post}" data-authed="1" data-hasfiles="0" data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-posts--post-', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-GETapi-posts--post-" onclick="tryItOut('GETapi-posts--post-');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-GETapi-posts--post-" onclick="cancelTryOut('GETapi-posts--post-');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-GETapi-posts--post-" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-green">GET</small>
+ <b><code>api/posts/{post}</code></b>
+</p>
+<p>
+<label id="auth-GETapi-posts--post-" hidden>Authorization header: <b><code>Bearer </code></b><input type="text" name="Authorization" data-prefix="Bearer " data-endpoint="GETapi-posts--post-" data-component="header"></label>
+</p>
+<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+<p>
+<b><code>post</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="post" data-endpoint="GETapi-posts--post-" data-component="url" required  hidden>
+<br>
+*integer* - 
+The identifier of a specific post resource.</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>fields[posts]</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="fields[posts]" data-endpoint="GETapi-posts--post-" data-component="query"  hidden>
+<br>
+*string* - 
+Comma-separated field/attribute names of the post resource to include in the response document.
+The available fields for current endpoint are: `id`, `post_category_id`, `admin_id`, `title`, `description`, `content`, `published`, `deleted_at`, `created_at`, `updated_at`.</p>
+<p>
+<b><code>fields[postCategory]</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="fields[postCategory]" data-endpoint="GETapi-posts--post-" data-component="query"  hidden>
+<br>
+*string* - 
+Comma-separated field/attribute names of the post_category resource to include in the response document.
+The available fields for current endpoint are: `id`, `name`, `deleted_at`, `created_at`, `updated_at`.</p>
+<p>
+<b><code>fields[admin]</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="fields[admin]" data-endpoint="GETapi-posts--post-" data-component="query"  hidden>
+<br>
+*string* - 
+Comma-separated field/attribute names of the admin resource to include in the response document.
+The available fields for current endpoint are: `id`, `name`, `email`, `password`, `deleted_at`, `created_at`, `updated_at`.</p>
+<p>
+<b><code>include</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="include" data-endpoint="GETapi-posts--post-" data-component="query"  hidden>
+<br>
+*string* - 
+Comma-separated relationship names to include in the response document.
+The available relationships for current endpoint are: `postCategory`, `admin`, `comments`, `postTags`, `tags`.</p>
+</form>
+<h2>Update Resource.</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<p>Update a specific post resource identified by the given id/key.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PUT \
+    "http://restful-example.web/api/posts/" \
+    -H "Authorization: Bearer {YOUR_AUTH_KEY}" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"post_category_id":13,"title":"explicabo","description":"ipsam","content":"omnis","published":false}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://restful-example.web/api/posts/"
+);
+
+let headers = {
+    "Authorization": "Bearer {YOUR_AUTH_KEY}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "post_category_id": 13,
+    "title": "explicabo",
+    "description": "ipsam",
+    "content": "omnis",
+    "published": false
+}
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+<div id="execution-results-PUTapi-posts--post-" hidden>
+    <blockquote>Received response<span id="execution-response-status-PUTapi-posts--post-"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-PUTapi-posts--post-"></code></pre>
+</div>
+<div id="execution-error-PUTapi-posts--post-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTapi-posts--post-"></code></pre>
+</div>
+<form id="form-PUTapi-posts--post-" data-method="PUT" data-path="api/posts/{post}" data-authed="1" data-hasfiles="0" data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('PUTapi-posts--post-', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-PUTapi-posts--post-" onclick="tryItOut('PUTapi-posts--post-');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-PUTapi-posts--post-" onclick="cancelTryOut('PUTapi-posts--post-');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-PUTapi-posts--post-" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-darkblue">PUT</small>
+ <b><code>api/posts/{post}</code></b>
+</p>
+<p>
+<small class="badge badge-purple">PATCH</small>
+ <b><code>api/posts/{post}</code></b>
+</p>
+<p>
+<label id="auth-PUTapi-posts--post-" hidden>Authorization header: <b><code>Bearer </code></b><input type="text" name="Authorization" data-prefix="Bearer " data-endpoint="PUTapi-posts--post-" data-component="header"></label>
+</p>
+<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+<p>
+<b><code>post</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="post" data-endpoint="PUTapi-posts--post-" data-component="url" required  hidden>
+<br>
+*integer* - 
+The identifier of a specific post resource.</p>
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+<p>
+<b><code>post_category_id</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+<input type="number" name="post_category_id" data-endpoint="PUTapi-posts--post-" data-component="body" required  hidden>
+<br>
+</p>
+<p>
+<b><code>title</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="title" data-endpoint="PUTapi-posts--post-" data-component="body" required  hidden>
+<br>
+</p>
+<p>
+<b><code>description</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="description" data-endpoint="PUTapi-posts--post-" data-component="body" required  hidden>
+<br>
+</p>
+<p>
+<b><code>content</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="content" data-endpoint="PUTapi-posts--post-" data-component="body" required  hidden>
+<br>
+</p>
+<p>
+<b><code>published</code></b>&nbsp;&nbsp;<small>boolean</small>  &nbsp;
+<label data-endpoint="PUTapi-posts--post-" hidden><input type="radio" name="published" value="true" data-endpoint="PUTapi-posts--post-" data-component="body" required ><code>true</code></label>
+<label data-endpoint="PUTapi-posts--post-" hidden><input type="radio" name="published" value="false" data-endpoint="PUTapi-posts--post-" data-component="body" required ><code>false</code></label>
+<br>
+</p>
+
+</form>
+<h2>Delete Resource.</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<p>Delete a specific post resource identified by the given id/key.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X DELETE \
+    "http://restful-example.web/api/posts/" \
+    -H "Authorization: Bearer {YOUR_AUTH_KEY}" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://restful-example.web/api/posts/"
+);
+
+let headers = {
+    "Authorization": "Bearer {YOUR_AUTH_KEY}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+<div id="execution-results-DELETEapi-posts--post-" hidden>
+    <blockquote>Received response<span id="execution-response-status-DELETEapi-posts--post-"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-posts--post-"></code></pre>
+</div>
+<div id="execution-error-DELETEapi-posts--post-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-posts--post-"></code></pre>
+</div>
+<form id="form-DELETEapi-posts--post-" data-method="DELETE" data-path="api/posts/{post}" data-authed="1" data-hasfiles="0" data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('DELETEapi-posts--post-', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-DELETEapi-posts--post-" onclick="tryItOut('DELETEapi-posts--post-');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-DELETEapi-posts--post-" onclick="cancelTryOut('DELETEapi-posts--post-');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-DELETEapi-posts--post-" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-red">DELETE</small>
+ <b><code>api/posts/{post}</code></b>
+</p>
+<p>
+<label id="auth-DELETEapi-posts--post-" hidden>Authorization header: <b><code>Bearer </code></b><input type="text" name="Authorization" data-prefix="Bearer " data-endpoint="DELETEapi-posts--post-" data-component="header"></label>
+</p>
+<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+<p>
+<b><code>post</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="post" data-endpoint="DELETEapi-posts--post-" data-component="url" required  hidden>
+<br>
+*integer* - 
+The identifier of a specific post resource.</p>
+</form><h1>Post Tag Management</h1>
+<p>API Endpoints for managing post tags.</p>
+<h2>Resource Collection.</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<p>Display a collection of the post tag resources in paginated document format.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://restful-example.web/api/post_tags" \
+    -H "Authorization: Bearer {YOUR_AUTH_KEY}" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://restful-example.web/api/post_tags"
+);
+
+let headers = {
+    "Authorization": "Bearer {YOUR_AUTH_KEY}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+<blockquote>
+<p>Example response (403):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "message": "This action is unauthorized."
+}</code></pre>
+<div id="execution-results-GETapi-post_tags" hidden>
+    <blockquote>Received response<span id="execution-response-status-GETapi-post_tags"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-post_tags"></code></pre>
+</div>
+<div id="execution-error-GETapi-post_tags" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-post_tags"></code></pre>
+</div>
+<form id="form-GETapi-post_tags" data-method="GET" data-path="api/post_tags" data-authed="1" data-hasfiles="0" data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-post_tags', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-GETapi-post_tags" onclick="tryItOut('GETapi-post_tags');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-GETapi-post_tags" onclick="cancelTryOut('GETapi-post_tags');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-GETapi-post_tags" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-green">GET</small>
+ <b><code>api/post_tags</code></b>
+</p>
+<p>
+<label id="auth-GETapi-post_tags" hidden>Authorization header: <b><code>Bearer </code></b><input type="text" name="Authorization" data-prefix="Bearer " data-endpoint="GETapi-post_tags" data-component="header"></label>
+</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>fields[post_tags]</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="fields[post_tags]" data-endpoint="GETapi-post_tags" data-component="query"  hidden>
+<br>
+*string* - 
+Comma-separated field/attribute names of the post_tag resource to include in the response document.
+The available fields for current endpoint are: `id`, `post_id`, `tag_id`.</p>
+<p>
+<b><code>fields[post]</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="fields[post]" data-endpoint="GETapi-post_tags" data-component="query"  hidden>
+<br>
+*string* - 
+Comma-separated field/attribute names of the post resource to include in the response document.
+The available fields for current endpoint are: `id`, `post_category_id`, `admin_id`, `title`, `description`, `content`, `published`, `deleted_at`, `created_at`, `updated_at`.</p>
+<p>
+<b><code>fields[tag]</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="fields[tag]" data-endpoint="GETapi-post_tags" data-component="query"  hidden>
+<br>
+*string* - 
+Comma-separated field/attribute names of the tag resource to include in the response document.
+The available fields for current endpoint are: `id`, `name`, `deleted_at`, `created_at`, `updated_at`.</p>
+<p>
+<b><code>page[size]</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="page[size]" data-endpoint="GETapi-post_tags" data-component="query"  hidden>
+<br>
+*integer* - 
+Describe how many records to display in a collection.</p>
+<p>
+<b><code>page[number]</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+<input type="number" name="page[number]" data-endpoint="GETapi-post_tags" data-component="query"  hidden>
+<br>
+*integer* - 
+Describe the number of current page to display.</p>
+<p>
+<b><code>include</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="include" data-endpoint="GETapi-post_tags" data-component="query"  hidden>
+<br>
+*string* - 
+Comma-separated relationship names to include in the response document.
+The available relationships for current endpoint are: `post`, `tag`.</p>
+<p>
+<b><code>sort</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="sort" data-endpoint="GETapi-post_tags" data-component="query"  hidden>
+<br>
+*string* - 
+Field/attribute to sort the resources in response document by.
+The available fields for sorting operation in current endpoint are: `id`, `post_id`, `tag_id`.</p>
+<p>
+<b><code>filter[`filterName`]</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="filter[`filterName`]" data-endpoint="GETapi-post_tags" data-component="query"  hidden>
+<br>
+*string* - 
+Filter the resources by specifying *attribute name* or *query scope name*.
+The available filters for current endpoint are: `id`, `post_id`, `tag_id`, `post.id`, `post.post_category_id`, `post.admin_id`, `post.title`, `post.description`, `post.content`, `post.published`, `post.deleted_at`, `post.created_at`, `post.updated_at`, `tag.id`, `tag.name`, `tag.deleted_at`, `tag.created_at`, `tag.updated_at`.</p>
+</form>
+<h2>Create Resource.</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<p>Create a new post tag resource.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://restful-example.web/api/post_tags" \
+    -H "Authorization: Bearer {YOUR_AUTH_KEY}" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"post_id":11,"tag_id":7}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://restful-example.web/api/post_tags"
+);
+
+let headers = {
+    "Authorization": "Bearer {YOUR_AUTH_KEY}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "post_id": 11,
+    "tag_id": 7
+}
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+<div id="execution-results-POSTapi-post_tags" hidden>
+    <blockquote>Received response<span id="execution-response-status-POSTapi-post_tags"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-post_tags"></code></pre>
+</div>
+<div id="execution-error-POSTapi-post_tags" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-post_tags"></code></pre>
+</div>
+<form id="form-POSTapi-post_tags" data-method="POST" data-path="api/post_tags" data-authed="1" data-hasfiles="0" data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('POSTapi-post_tags', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-POSTapi-post_tags" onclick="tryItOut('POSTapi-post_tags');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-POSTapi-post_tags" onclick="cancelTryOut('POSTapi-post_tags');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-POSTapi-post_tags" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-black">POST</small>
+ <b><code>api/post_tags</code></b>
+</p>
+<p>
+<label id="auth-POSTapi-post_tags" hidden>Authorization header: <b><code>Bearer </code></b><input type="text" name="Authorization" data-prefix="Bearer " data-endpoint="POSTapi-post_tags" data-component="header"></label>
+</p>
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+<p>
+<b><code>post_id</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+<input type="number" name="post_id" data-endpoint="POSTapi-post_tags" data-component="body" required  hidden>
+<br>
+</p>
+<p>
+<b><code>tag_id</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+<input type="number" name="tag_id" data-endpoint="POSTapi-post_tags" data-component="body" required  hidden>
+<br>
+</p>
+
+</form>
+<h2>Show Resource.</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<p>Display a specific post tag resource identified by the given id/key.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://restful-example.web/api/post_tags/non" \
+    -H "Authorization: Bearer {YOUR_AUTH_KEY}" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://restful-example.web/api/post_tags/non"
+);
+
+let headers = {
+    "Authorization": "Bearer {YOUR_AUTH_KEY}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+<blockquote>
+<p>Example response (404):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "message": "No query results for model [App\\Models\\PostTag] non"
+}</code></pre>
+<div id="execution-results-GETapi-post_tags--post_tag-" hidden>
+    <blockquote>Received response<span id="execution-response-status-GETapi-post_tags--post_tag-"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-post_tags--post_tag-"></code></pre>
+</div>
+<div id="execution-error-GETapi-post_tags--post_tag-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-post_tags--post_tag-"></code></pre>
+</div>
+<form id="form-GETapi-post_tags--post_tag-" data-method="GET" data-path="api/post_tags/{post_tag}" data-authed="1" data-hasfiles="0" data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-post_tags--post_tag-', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-GETapi-post_tags--post_tag-" onclick="tryItOut('GETapi-post_tags--post_tag-');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-GETapi-post_tags--post_tag-" onclick="cancelTryOut('GETapi-post_tags--post_tag-');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-GETapi-post_tags--post_tag-" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-green">GET</small>
+ <b><code>api/post_tags/{post_tag}</code></b>
+</p>
+<p>
+<label id="auth-GETapi-post_tags--post_tag-" hidden>Authorization header: <b><code>Bearer </code></b><input type="text" name="Authorization" data-prefix="Bearer " data-endpoint="GETapi-post_tags--post_tag-" data-component="header"></label>
+</p>
+<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+<p>
+<b><code>post_tag</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="post_tag" data-endpoint="GETapi-post_tags--post_tag-" data-component="url" required  hidden>
+<br>
+</p>
+<p>
+<b><code>postTag</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="postTag" data-endpoint="GETapi-post_tags--post_tag-" data-component="url" required  hidden>
+<br>
+*integer* - 
+The identifier of a specific post tag resource.</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>fields[post_tags]</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="fields[post_tags]" data-endpoint="GETapi-post_tags--post_tag-" data-component="query"  hidden>
+<br>
+*string* - 
+Comma-separated field/attribute names of the post_tag resource to include in the response document.
+The available fields for current endpoint are: `id`, `post_id`, `tag_id`.</p>
+<p>
+<b><code>fields[post]</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="fields[post]" data-endpoint="GETapi-post_tags--post_tag-" data-component="query"  hidden>
+<br>
+*string* - 
+Comma-separated field/attribute names of the post resource to include in the response document.
+The available fields for current endpoint are: `id`, `post_category_id`, `admin_id`, `title`, `description`, `content`, `published`, `deleted_at`, `created_at`, `updated_at`.</p>
+<p>
+<b><code>fields[tag]</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="fields[tag]" data-endpoint="GETapi-post_tags--post_tag-" data-component="query"  hidden>
+<br>
+*string* - 
+Comma-separated field/attribute names of the tag resource to include in the response document.
+The available fields for current endpoint are: `id`, `name`, `deleted_at`, `created_at`, `updated_at`.</p>
+<p>
+<b><code>include</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="include" data-endpoint="GETapi-post_tags--post_tag-" data-component="query"  hidden>
+<br>
+*string* - 
+Comma-separated relationship names to include in the response document.
+The available relationships for current endpoint are: `post`, `tag`.</p>
+</form>
+<h2>Update Resource.</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<p>Update a specific post tag resource identified by the given id/key.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PUT \
+    "http://restful-example.web/api/post_tags/saepe" \
+    -H "Authorization: Bearer {YOUR_AUTH_KEY}" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"post_id":4,"tag_id":18}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://restful-example.web/api/post_tags/saepe"
+);
+
+let headers = {
+    "Authorization": "Bearer {YOUR_AUTH_KEY}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "post_id": 4,
+    "tag_id": 18
+}
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+<div id="execution-results-PUTapi-post_tags--post_tag-" hidden>
+    <blockquote>Received response<span id="execution-response-status-PUTapi-post_tags--post_tag-"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-PUTapi-post_tags--post_tag-"></code></pre>
+</div>
+<div id="execution-error-PUTapi-post_tags--post_tag-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTapi-post_tags--post_tag-"></code></pre>
+</div>
+<form id="form-PUTapi-post_tags--post_tag-" data-method="PUT" data-path="api/post_tags/{post_tag}" data-authed="1" data-hasfiles="0" data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('PUTapi-post_tags--post_tag-', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-PUTapi-post_tags--post_tag-" onclick="tryItOut('PUTapi-post_tags--post_tag-');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-PUTapi-post_tags--post_tag-" onclick="cancelTryOut('PUTapi-post_tags--post_tag-');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-PUTapi-post_tags--post_tag-" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-darkblue">PUT</small>
+ <b><code>api/post_tags/{post_tag}</code></b>
+</p>
+<p>
+<small class="badge badge-purple">PATCH</small>
+ <b><code>api/post_tags/{post_tag}</code></b>
+</p>
+<p>
+<label id="auth-PUTapi-post_tags--post_tag-" hidden>Authorization header: <b><code>Bearer </code></b><input type="text" name="Authorization" data-prefix="Bearer " data-endpoint="PUTapi-post_tags--post_tag-" data-component="header"></label>
+</p>
+<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+<p>
+<b><code>post_tag</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="post_tag" data-endpoint="PUTapi-post_tags--post_tag-" data-component="url" required  hidden>
+<br>
+</p>
+<p>
+<b><code>postTag</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="postTag" data-endpoint="PUTapi-post_tags--post_tag-" data-component="url" required  hidden>
+<br>
+*integer* - 
+The identifier of a specific post tag resource.</p>
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+<p>
+<b><code>post_id</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+<input type="number" name="post_id" data-endpoint="PUTapi-post_tags--post_tag-" data-component="body" required  hidden>
+<br>
+</p>
+<p>
+<b><code>tag_id</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+<input type="number" name="tag_id" data-endpoint="PUTapi-post_tags--post_tag-" data-component="body" required  hidden>
+<br>
+</p>
+
+</form>
+<h2>Delete Resource.</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<p>Delete a specific post tag resource identified by the given id/key.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X DELETE \
+    "http://restful-example.web/api/post_tags/et" \
+    -H "Authorization: Bearer {YOUR_AUTH_KEY}" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://restful-example.web/api/post_tags/et"
+);
+
+let headers = {
+    "Authorization": "Bearer {YOUR_AUTH_KEY}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+<div id="execution-results-DELETEapi-post_tags--post_tag-" hidden>
+    <blockquote>Received response<span id="execution-response-status-DELETEapi-post_tags--post_tag-"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-post_tags--post_tag-"></code></pre>
+</div>
+<div id="execution-error-DELETEapi-post_tags--post_tag-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-post_tags--post_tag-"></code></pre>
+</div>
+<form id="form-DELETEapi-post_tags--post_tag-" data-method="DELETE" data-path="api/post_tags/{post_tag}" data-authed="1" data-hasfiles="0" data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('DELETEapi-post_tags--post_tag-', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-DELETEapi-post_tags--post_tag-" onclick="tryItOut('DELETEapi-post_tags--post_tag-');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-DELETEapi-post_tags--post_tag-" onclick="cancelTryOut('DELETEapi-post_tags--post_tag-');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-DELETEapi-post_tags--post_tag-" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-red">DELETE</small>
+ <b><code>api/post_tags/{post_tag}</code></b>
+</p>
+<p>
+<label id="auth-DELETEapi-post_tags--post_tag-" hidden>Authorization header: <b><code>Bearer </code></b><input type="text" name="Authorization" data-prefix="Bearer " data-endpoint="DELETEapi-post_tags--post_tag-" data-component="header"></label>
+</p>
+<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+<p>
+<b><code>post_tag</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="post_tag" data-endpoint="DELETEapi-post_tags--post_tag-" data-component="url" required  hidden>
+<br>
+</p>
+<p>
+<b><code>postTag</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="postTag" data-endpoint="DELETEapi-post_tags--post_tag-" data-component="url" required  hidden>
+<br>
+*integer* - 
+The identifier of a specific post tag resource.</p>
+</form><h1>Tag Management</h1>
+<p>API Endpoints for managing tags.</p>
+<h2>Resource Collection.</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<p>Display a collection of the tag resources in paginated document format.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://restful-example.web/api/tags" \
+    -H "Authorization: Bearer {YOUR_AUTH_KEY}" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://restful-example.web/api/tags"
+);
+
+let headers = {
+    "Authorization": "Bearer {YOUR_AUTH_KEY}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+<blockquote>
+<p>Example response (403):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "message": "This action is unauthorized."
+}</code></pre>
+<div id="execution-results-GETapi-tags" hidden>
+    <blockquote>Received response<span id="execution-response-status-GETapi-tags"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-tags"></code></pre>
+</div>
+<div id="execution-error-GETapi-tags" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-tags"></code></pre>
+</div>
+<form id="form-GETapi-tags" data-method="GET" data-path="api/tags" data-authed="1" data-hasfiles="0" data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-tags', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-GETapi-tags" onclick="tryItOut('GETapi-tags');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-GETapi-tags" onclick="cancelTryOut('GETapi-tags');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-GETapi-tags" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-green">GET</small>
+ <b><code>api/tags</code></b>
+</p>
+<p>
+<label id="auth-GETapi-tags" hidden>Authorization header: <b><code>Bearer </code></b><input type="text" name="Authorization" data-prefix="Bearer " data-endpoint="GETapi-tags" data-component="header"></label>
+</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>fields[tags]</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="fields[tags]" data-endpoint="GETapi-tags" data-component="query"  hidden>
+<br>
+*string* - 
+Comma-separated field/attribute names of the tag resource to include in the response document.
+The available fields for current endpoint are: `id`, `name`, `deleted_at`, `created_at`, `updated_at`.</p>
+<p>
+<b><code>page[size]</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="page[size]" data-endpoint="GETapi-tags" data-component="query"  hidden>
+<br>
+*integer* - 
+Describe how many records to display in a collection.</p>
+<p>
+<b><code>page[number]</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+<input type="number" name="page[number]" data-endpoint="GETapi-tags" data-component="query"  hidden>
+<br>
+*integer* - 
+Describe the number of current page to display.</p>
+<p>
+<b><code>include</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="include" data-endpoint="GETapi-tags" data-component="query"  hidden>
+<br>
+*string* - 
+Comma-separated relationship names to include in the response document.
+The available relationships for current endpoint are: `postTags`, `posts`.</p>
+<p>
+<b><code>sort</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="sort" data-endpoint="GETapi-tags" data-component="query"  hidden>
+<br>
+*string* - 
+Field/attribute to sort the resources in response document by.
+The available fields for sorting operation in current endpoint are: `id`, `name`, `deleted_at`, `created_at`, `updated_at`.</p>
+<p>
+<b><code>filter[`filterName`]</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="filter[`filterName`]" data-endpoint="GETapi-tags" data-component="query"  hidden>
+<br>
+*string* - 
+Filter the resources by specifying *attribute name* or *query scope name*.
+The available filters for current endpoint are: `id`, `name`, `deleted_at`, `created_at`, `updated_at`.</p>
+</form>
+<h2>Create Resource.</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<p>Create a new tag resource.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://restful-example.web/api/tags" \
+    -H "Authorization: Bearer {YOUR_AUTH_KEY}" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"name":"aut"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://restful-example.web/api/tags"
+);
+
+let headers = {
+    "Authorization": "Bearer {YOUR_AUTH_KEY}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "aut"
+}
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+<div id="execution-results-POSTapi-tags" hidden>
+    <blockquote>Received response<span id="execution-response-status-POSTapi-tags"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-tags"></code></pre>
+</div>
+<div id="execution-error-POSTapi-tags" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-tags"></code></pre>
+</div>
+<form id="form-POSTapi-tags" data-method="POST" data-path="api/tags" data-authed="1" data-hasfiles="0" data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('POSTapi-tags', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-POSTapi-tags" onclick="tryItOut('POSTapi-tags');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-POSTapi-tags" onclick="cancelTryOut('POSTapi-tags');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-POSTapi-tags" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-black">POST</small>
+ <b><code>api/tags</code></b>
+</p>
+<p>
+<label id="auth-POSTapi-tags" hidden>Authorization header: <b><code>Bearer </code></b><input type="text" name="Authorization" data-prefix="Bearer " data-endpoint="POSTapi-tags" data-component="header"></label>
+</p>
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+<p>
+<b><code>name</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="name" data-endpoint="POSTapi-tags" data-component="body" required  hidden>
+<br>
+</p>
+
+</form>
+<h2>Show Resource.</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<p>Display a specific tag resource identified by the given id/key.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X GET \
+    -G "http://restful-example.web/api/tags/" \
+    -H "Authorization: Bearer {YOUR_AUTH_KEY}" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://restful-example.web/api/tags/"
+);
+
+let headers = {
+    "Authorization": "Bearer {YOUR_AUTH_KEY}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+<blockquote>
+<p>Example response (403):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "message": "This action is unauthorized."
+}</code></pre>
+<div id="execution-results-GETapi-tags--tag-" hidden>
+    <blockquote>Received response<span id="execution-response-status-GETapi-tags--tag-"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-tags--tag-"></code></pre>
+</div>
+<div id="execution-error-GETapi-tags--tag-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-tags--tag-"></code></pre>
+</div>
+<form id="form-GETapi-tags--tag-" data-method="GET" data-path="api/tags/{tag}" data-authed="1" data-hasfiles="0" data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('GETapi-tags--tag-', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-GETapi-tags--tag-" onclick="tryItOut('GETapi-tags--tag-');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-GETapi-tags--tag-" onclick="cancelTryOut('GETapi-tags--tag-');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-GETapi-tags--tag-" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-green">GET</small>
+ <b><code>api/tags/{tag}</code></b>
+</p>
+<p>
+<label id="auth-GETapi-tags--tag-" hidden>Authorization header: <b><code>Bearer </code></b><input type="text" name="Authorization" data-prefix="Bearer " data-endpoint="GETapi-tags--tag-" data-component="header"></label>
+</p>
+<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+<p>
+<b><code>tag</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="tag" data-endpoint="GETapi-tags--tag-" data-component="url" required  hidden>
+<br>
+*integer* - 
+The identifier of a specific tag resource.</p>
+<h4 class="fancy-heading-panel"><b>Query Parameters</b></h4>
+<p>
+<b><code>fields[tags]</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="fields[tags]" data-endpoint="GETapi-tags--tag-" data-component="query"  hidden>
+<br>
+*string* - 
+Comma-separated field/attribute names of the tag resource to include in the response document.
+The available fields for current endpoint are: `id`, `name`, `deleted_at`, `created_at`, `updated_at`.</p>
+<p>
+<b><code>include</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="include" data-endpoint="GETapi-tags--tag-" data-component="query"  hidden>
+<br>
+*string* - 
+Comma-separated relationship names to include in the response document.
+The available relationships for current endpoint are: `postTags`, `posts`.</p>
+</form>
+<h2>Update Resource.</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<p>Update a specific tag resource identified by the given id/key.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X PUT \
+    "http://restful-example.web/api/tags/" \
+    -H "Authorization: Bearer {YOUR_AUTH_KEY}" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"name":"ipsum"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://restful-example.web/api/tags/"
+);
+
+let headers = {
+    "Authorization": "Bearer {YOUR_AUTH_KEY}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "ipsum"
+}
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+<div id="execution-results-PUTapi-tags--tag-" hidden>
+    <blockquote>Received response<span id="execution-response-status-PUTapi-tags--tag-"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-PUTapi-tags--tag-"></code></pre>
+</div>
+<div id="execution-error-PUTapi-tags--tag-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTapi-tags--tag-"></code></pre>
+</div>
+<form id="form-PUTapi-tags--tag-" data-method="PUT" data-path="api/tags/{tag}" data-authed="1" data-hasfiles="0" data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('PUTapi-tags--tag-', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-PUTapi-tags--tag-" onclick="tryItOut('PUTapi-tags--tag-');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-PUTapi-tags--tag-" onclick="cancelTryOut('PUTapi-tags--tag-');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-PUTapi-tags--tag-" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-darkblue">PUT</small>
+ <b><code>api/tags/{tag}</code></b>
+</p>
+<p>
+<small class="badge badge-purple">PATCH</small>
+ <b><code>api/tags/{tag}</code></b>
+</p>
+<p>
+<label id="auth-PUTapi-tags--tag-" hidden>Authorization header: <b><code>Bearer </code></b><input type="text" name="Authorization" data-prefix="Bearer " data-endpoint="PUTapi-tags--tag-" data-component="header"></label>
+</p>
+<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+<p>
+<b><code>tag</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="tag" data-endpoint="PUTapi-tags--tag-" data-component="url" required  hidden>
+<br>
+*integer* - 
+The identifier of a specific tag resource.</p>
+<h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+<p>
+<b><code>name</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="name" data-endpoint="PUTapi-tags--tag-" data-component="body" required  hidden>
+<br>
+</p>
+
+</form>
+<h2>Delete Resource.</h2>
+<p><small class="badge badge-darkred">requires authentication</small></p>
+<p>Delete a specific tag resource identified by the given id/key.</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X DELETE \
+    "http://restful-example.web/api/tags/" \
+    -H "Authorization: Bearer {YOUR_AUTH_KEY}" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json"</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://restful-example.web/api/tags/"
+);
+
+let headers = {
+    "Authorization": "Bearer {YOUR_AUTH_KEY}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+<div id="execution-results-DELETEapi-tags--tag-" hidden>
+    <blockquote>Received response<span id="execution-response-status-DELETEapi-tags--tag-"></span>:</blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-tags--tag-"></code></pre>
+</div>
+<div id="execution-error-DELETEapi-tags--tag-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-tags--tag-"></code></pre>
+</div>
+<form id="form-DELETEapi-tags--tag-" data-method="DELETE" data-path="api/tags/{tag}" data-authed="1" data-hasfiles="0" data-headers='{"Authorization":"Bearer {YOUR_AUTH_KEY}","Content-Type":"application\/json","Accept":"application\/json"}' onsubmit="event.preventDefault(); executeTryOut('DELETEapi-tags--tag-', this);">
+<h3>
+    Request&nbsp;&nbsp;&nbsp;
+        <button type="button" style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-tryout-DELETEapi-tags--tag-" onclick="tryItOut('DELETEapi-tags--tag-');">Try it out ⚡</button>
+    <button type="button" style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-canceltryout-DELETEapi-tags--tag-" onclick="cancelTryOut('DELETEapi-tags--tag-');" hidden>Cancel</button>&nbsp;&nbsp;
+    <button type="submit" style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;" id="btn-executetryout-DELETEapi-tags--tag-" hidden>Send Request 💥</button>
+    </h3>
+<p>
+<small class="badge badge-red">DELETE</small>
+ <b><code>api/tags/{tag}</code></b>
+</p>
+<p>
+<label id="auth-DELETEapi-tags--tag-" hidden>Authorization header: <b><code>Bearer </code></b><input type="text" name="Authorization" data-prefix="Bearer " data-endpoint="DELETEapi-tags--tag-" data-component="header"></label>
+</p>
+<h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+<p>
+<b><code>tag</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="tag" data-endpoint="DELETEapi-tags--tag-" data-component="url" required  hidden>
+<br>
+*integer* - 
+The identifier of a specific tag resource.</p>
+</form>
+    </div>
+    <div class="dark-box">
+                    <div class="lang-selector">
+                                    <a href="#" data-language-name="bash">bash</a>
+                                    <a href="#" data-language-name="javascript">javascript</a>
+                            </div>
+            </div>
+</div>
+<script>
+    $(function () {
+        var languages = ["bash","javascript"];
+        setupLanguages(languages);
+    });
+</script>
+</body>
+</html>

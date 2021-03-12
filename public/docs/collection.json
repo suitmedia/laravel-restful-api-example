@@ -1,0 +1,1510 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "restful-example.web"
+        }
+    ],
+    "info": {
+        "name": "Laravel",
+        "_postman_id": "bce886f1-efcf-42d3-a5eb-d26e19f13cd0",
+        "description": "",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Admin Management",
+            "description": "\nAPI Endpoints for managing admins.",
+            "item": [
+                {
+                    "name": "Resource Collection.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admins",
+                            "query": [
+                                {
+                                    "key": "fields%5Badmins%5D",
+                                    "value": "",
+                                    "description": "*string* - \nComma-separated field\/attribute names of the admin resource to include in the response document.\nThe available fields for current endpoint are: `id`, `name`, `email`, `password`, `deleted_at`, `created_at`, `updated_at`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "page%5Bsize%5D",
+                                    "value": "",
+                                    "description": "*integer* - \nDescribe how many records to display in a collection.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "page%5Bnumber%5D",
+                                    "value": "",
+                                    "description": "*integer* - \nDescribe the number of current page to display.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "include",
+                                    "value": "",
+                                    "description": "*string* - \nComma-separated relationship names to include in the response document.\nThe available relationships for current endpoint are: `posts`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "sort",
+                                    "value": "",
+                                    "description": "*string* - \nField\/attribute to sort the resources in response document by.\nThe available fields for sorting operation in current endpoint are: `id`, `name`, `email`, `password`, `deleted_at`, `created_at`, `updated_at`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "filter%5B%60filterName%60%5D",
+                                    "value": "",
+                                    "description": "*string* - \nFilter the resources by specifying *attribute name* or *query scope name*.\nThe available filters for current endpoint are: `id`, `name`, `email`, `password`, `deleted_at`, `created_at`, `updated_at`.",
+                                    "disabled": true
+                                }
+                            ],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/admins?fields%5Badmins%5D=&page%5Bsize%5D=&page%5Bnumber%5D=&include=&sort=&filter%5B%60filterName%60%5D="
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Display a collection of the admin resources in paginated document format."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Create Resource.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admins",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/admins"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"odio\",\n    \"email\": \"franecki.destin@example.org\",\n    \"password\": \"corporis\",\n    \"role\": \"editor\"\n}"
+                        },
+                        "description": "Create a new admin resource."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Show Resource.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admins\/:admin",
+                            "query": [
+                                {
+                                    "key": "fields%5Badmins%5D",
+                                    "value": "",
+                                    "description": "*string* - \nComma-separated field\/attribute names of the admin resource to include in the response document.\nThe available fields for current endpoint are: `id`, `name`, `email`, `password`, `deleted_at`, `created_at`, `updated_at`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "include",
+                                    "value": "",
+                                    "description": "*string* - \nComma-separated relationship names to include in the response document.\nThe available relationships for current endpoint are: `posts`.",
+                                    "disabled": true
+                                }
+                            ],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/admins\/:admin?fields%5Badmins%5D=&include=",
+                            "variable": [
+                                {
+                                    "id": "admin",
+                                    "key": "admin",
+                                    "value": "",
+                                    "description": "*integer* - \nThe identifier of a specific admin resource."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Display a specific admin resource identified by the given id\/key."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Resource.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admins\/:admin",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/admins\/:admin",
+                            "variable": [
+                                {
+                                    "id": "admin",
+                                    "key": "admin",
+                                    "value": "",
+                                    "description": "*integer* - \nThe identifier of a specific admin resource."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"rerum\",\n    \"email\": \"willy63@example.com\",\n    \"password\": \"reprehenderit\",\n    \"role\": \"editor\"\n}"
+                        },
+                        "description": "Update a specific admin resource identified by the given id\/key."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Resource.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/admins\/:admin",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/admins\/:admin",
+                            "variable": [
+                                {
+                                    "id": "admin",
+                                    "key": "admin",
+                                    "value": "",
+                                    "description": "*integer* - \nThe identifier of a specific admin resource."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Delete a specific admin resource identified by the given id\/key."
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Comment Management",
+            "description": "\nAPI Endpoints for managing comments.",
+            "item": [
+                {
+                    "name": "Resource Collection.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/comments",
+                            "query": [
+                                {
+                                    "key": "fields%5Bcomments%5D",
+                                    "value": "",
+                                    "description": "*string* - \nComma-separated field\/attribute names of the comment resource to include in the response document.\nThe available fields for current endpoint are: `id`, `post_id`, `user_id`, `content`, `published`, `deleted_at`, `created_at`, `updated_at`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "fields%5Bpost%5D",
+                                    "value": "",
+                                    "description": "*string* - \nComma-separated field\/attribute names of the post resource to include in the response document.\nThe available fields for current endpoint are: `id`, `post_category_id`, `admin_id`, `title`, `description`, `content`, `published`, `deleted_at`, `created_at`, `updated_at`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "page%5Bsize%5D",
+                                    "value": "",
+                                    "description": "*integer* - \nDescribe how many records to display in a collection.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "page%5Bnumber%5D",
+                                    "value": "",
+                                    "description": "*integer* - \nDescribe the number of current page to display.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "include",
+                                    "value": "",
+                                    "description": "*string* - \nComma-separated relationship names to include in the response document.\nThe available relationships for current endpoint are: `post`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "sort",
+                                    "value": "",
+                                    "description": "*string* - \nField\/attribute to sort the resources in response document by.\nThe available fields for sorting operation in current endpoint are: `id`, `post_id`, `user_id`, `content`, `published`, `deleted_at`, `created_at`, `updated_at`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "filter%5B%60filterName%60%5D",
+                                    "value": "",
+                                    "description": "*string* - \nFilter the resources by specifying *attribute name* or *query scope name*.\nThe available filters for current endpoint are: `id`, `post_id`, `user_id`, `content`, `published`, `deleted_at`, `created_at`, `updated_at`, `post.id`, `post.post_category_id`, `post.admin_id`, `post.title`, `post.description`, `post.content`, `post.published`, `post.deleted_at`, `post.created_at`, `post.updated_at`.",
+                                    "disabled": true
+                                }
+                            ],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/comments?fields%5Bcomments%5D=&fields%5Bpost%5D=&page%5Bsize%5D=&page%5Bnumber%5D=&include=&sort=&filter%5B%60filterName%60%5D="
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Display a collection of the comment resources in paginated document format."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Create Resource.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/comments",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/comments"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"post_id\": 12,\n    \"user_id\": 2,\n    \"content\": \"deleniti\",\n    \"published\": false\n}"
+                        },
+                        "description": "Create a new comment resource."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Show Resource.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/comments\/:comment",
+                            "query": [
+                                {
+                                    "key": "fields%5Bcomments%5D",
+                                    "value": "",
+                                    "description": "*string* - \nComma-separated field\/attribute names of the comment resource to include in the response document.\nThe available fields for current endpoint are: `id`, `post_id`, `user_id`, `content`, `published`, `deleted_at`, `created_at`, `updated_at`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "fields%5Bpost%5D",
+                                    "value": "",
+                                    "description": "*string* - \nComma-separated field\/attribute names of the post resource to include in the response document.\nThe available fields for current endpoint are: `id`, `post_category_id`, `admin_id`, `title`, `description`, `content`, `published`, `deleted_at`, `created_at`, `updated_at`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "include",
+                                    "value": "",
+                                    "description": "*string* - \nComma-separated relationship names to include in the response document.\nThe available relationships for current endpoint are: `post`.",
+                                    "disabled": true
+                                }
+                            ],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/comments\/:comment?fields%5Bcomments%5D=&fields%5Bpost%5D=&include=",
+                            "variable": [
+                                {
+                                    "id": "comment",
+                                    "key": "comment",
+                                    "value": "",
+                                    "description": "*integer* - \nThe identifier of a specific comment resource."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Display a specific comment resource identified by the given id\/key."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Resource.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/comments\/:comment",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/comments\/:comment",
+                            "variable": [
+                                {
+                                    "id": "comment",
+                                    "key": "comment",
+                                    "value": "",
+                                    "description": "*integer* - \nThe identifier of a specific comment resource."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"post_id\": 10,\n    \"user_id\": 15,\n    \"content\": \"in\",\n    \"published\": false\n}"
+                        },
+                        "description": "Update a specific comment resource identified by the given id\/key."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Resource.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/comments\/:comment",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/comments\/:comment",
+                            "variable": [
+                                {
+                                    "id": "comment",
+                                    "key": "comment",
+                                    "value": "",
+                                    "description": "*integer* - \nThe identifier of a specific comment resource."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Delete a specific comment resource identified by the given id\/key."
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Endpoints",
+            "description": "",
+            "item": [
+                {
+                    "name": "Return an empty response simply to trigger the storage of the CSRF cookie in the browser.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "sanctum\/csrf-cookie",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/sanctum\/csrf-cookie"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Token.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/token",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/token"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"email\": \"norval92@example.org\",\n    \"password\": \"ullam\"\n}"
+                        },
+                        "description": "Return a token for requesting protected resources.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "\/",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "\/",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/\/"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Post Category Management",
+            "description": "\nAPI Endpoints for managing post categories.",
+            "item": [
+                {
+                    "name": "Resource Collection.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/post_categories",
+                            "query": [
+                                {
+                                    "key": "fields%5Bpost_categories%5D",
+                                    "value": "",
+                                    "description": "*string* - \nComma-separated field\/attribute names of the post_category resource to include in the response document.\nThe available fields for current endpoint are: `id`, `name`, `deleted_at`, `created_at`, `updated_at`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "page%5Bsize%5D",
+                                    "value": "",
+                                    "description": "*integer* - \nDescribe how many records to display in a collection.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "page%5Bnumber%5D",
+                                    "value": "",
+                                    "description": "*integer* - \nDescribe the number of current page to display.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "include",
+                                    "value": "",
+                                    "description": "*string* - \nComma-separated relationship names to include in the response document.\nThe available relationships for current endpoint are: `posts`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "sort",
+                                    "value": "",
+                                    "description": "*string* - \nField\/attribute to sort the resources in response document by.\nThe available fields for sorting operation in current endpoint are: `id`, `name`, `deleted_at`, `created_at`, `updated_at`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "filter%5B%60filterName%60%5D",
+                                    "value": "",
+                                    "description": "*string* - \nFilter the resources by specifying *attribute name* or *query scope name*.\nThe available filters for current endpoint are: `id`, `name`, `deleted_at`, `created_at`, `updated_at`.",
+                                    "disabled": true
+                                }
+                            ],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/post_categories?fields%5Bpost_categories%5D=&page%5Bsize%5D=&page%5Bnumber%5D=&include=&sort=&filter%5B%60filterName%60%5D="
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Display a collection of the post category resources in paginated document format."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Create Resource.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/post_categories",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/post_categories"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"sequi\"\n}"
+                        },
+                        "description": "Create a new post category resource."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Show Resource.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/post_categories\/:post_category",
+                            "query": [
+                                {
+                                    "key": "fields%5Bpost_categories%5D",
+                                    "value": "",
+                                    "description": "*string* - \nComma-separated field\/attribute names of the post_category resource to include in the response document.\nThe available fields for current endpoint are: `id`, `name`, `deleted_at`, `created_at`, `updated_at`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "include",
+                                    "value": "",
+                                    "description": "*string* - \nComma-separated relationship names to include in the response document.\nThe available relationships for current endpoint are: `posts`.",
+                                    "disabled": true
+                                }
+                            ],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/post_categories\/:post_category?fields%5Bpost_categories%5D=&include=",
+                            "variable": [
+                                {
+                                    "id": "post_category",
+                                    "key": "post_category",
+                                    "value": "eum",
+                                    "description": ""
+                                },
+                                {
+                                    "id": "postCategory",
+                                    "key": "postCategory",
+                                    "value": "",
+                                    "description": "*integer* - \nThe identifier of a specific post category resource."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Display a specific post category resource identified by the given id\/key."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Resource.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/post_categories\/:post_category",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/post_categories\/:post_category",
+                            "variable": [
+                                {
+                                    "id": "post_category",
+                                    "key": "post_category",
+                                    "value": "nihil",
+                                    "description": ""
+                                },
+                                {
+                                    "id": "postCategory",
+                                    "key": "postCategory",
+                                    "value": "",
+                                    "description": "*integer* - \nThe identifier of a specific post category resource."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"et\"\n}"
+                        },
+                        "description": "Update a specific post category resource identified by the given id\/key."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Resource.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/post_categories\/:post_category",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/post_categories\/:post_category",
+                            "variable": [
+                                {
+                                    "id": "post_category",
+                                    "key": "post_category",
+                                    "value": "vel",
+                                    "description": ""
+                                },
+                                {
+                                    "id": "postCategory",
+                                    "key": "postCategory",
+                                    "value": "",
+                                    "description": "*integer* - \nThe identifier of a specific post category resource."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Delete a specific post category resource identified by the given id\/key."
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Post Management",
+            "description": "\nAPI Endpoints for managing posts.",
+            "item": [
+                {
+                    "name": "Resource Collection.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/posts",
+                            "query": [
+                                {
+                                    "key": "fields%5Bposts%5D",
+                                    "value": "",
+                                    "description": "*string* - \nComma-separated field\/attribute names of the post resource to include in the response document.\nThe available fields for current endpoint are: `id`, `post_category_id`, `admin_id`, `title`, `description`, `content`, `published`, `deleted_at`, `created_at`, `updated_at`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "fields%5BpostCategory%5D",
+                                    "value": "",
+                                    "description": "*string* - \nComma-separated field\/attribute names of the post_category resource to include in the response document.\nThe available fields for current endpoint are: `id`, `name`, `deleted_at`, `created_at`, `updated_at`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "fields%5Badmin%5D",
+                                    "value": "",
+                                    "description": "*string* - \nComma-separated field\/attribute names of the admin resource to include in the response document.\nThe available fields for current endpoint are: `id`, `name`, `email`, `password`, `deleted_at`, `created_at`, `updated_at`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "page%5Bsize%5D",
+                                    "value": "",
+                                    "description": "*integer* - \nDescribe how many records to display in a collection.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "page%5Bnumber%5D",
+                                    "value": "",
+                                    "description": "*integer* - \nDescribe the number of current page to display.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "include",
+                                    "value": "",
+                                    "description": "*string* - \nComma-separated relationship names to include in the response document.\nThe available relationships for current endpoint are: `postCategory`, `admin`, `comments`, `postTags`, `tags`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "sort",
+                                    "value": "",
+                                    "description": "*string* - \nField\/attribute to sort the resources in response document by.\nThe available fields for sorting operation in current endpoint are: `id`, `post_category_id`, `admin_id`, `title`, `description`, `content`, `published`, `deleted_at`, `created_at`, `updated_at`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "filter%5B%60filterName%60%5D",
+                                    "value": "",
+                                    "description": "*string* - \nFilter the resources by specifying *attribute name* or *query scope name*.\nThe available filters for current endpoint are: `id`, `post_category_id`, `admin_id`, `title`, `description`, `content`, `published`, `deleted_at`, `created_at`, `updated_at`, `postCategory.id`, `postCategory.name`, `postCategory.deleted_at`, `postCategory.created_at`, `postCategory.updated_at`, `admin.id`, `admin.name`, `admin.email`, `admin.password`, `admin.deleted_at`, `admin.created_at`, `admin.updated_at`.",
+                                    "disabled": true
+                                }
+                            ],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/posts?fields%5Bposts%5D=&fields%5BpostCategory%5D=&fields%5Badmin%5D=&page%5Bsize%5D=&page%5Bnumber%5D=&include=&sort=&filter%5B%60filterName%60%5D="
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Display a collection of the post resources in paginated document format."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Create Resource.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/posts",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/posts"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"post_category_id\": 5,\n    \"title\": \"et\",\n    \"description\": \"illo\",\n    \"content\": \"ut\",\n    \"published\": false\n}"
+                        },
+                        "description": "Create a new post resource."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Show Resource.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/posts\/:post",
+                            "query": [
+                                {
+                                    "key": "fields%5Bposts%5D",
+                                    "value": "",
+                                    "description": "*string* - \nComma-separated field\/attribute names of the post resource to include in the response document.\nThe available fields for current endpoint are: `id`, `post_category_id`, `admin_id`, `title`, `description`, `content`, `published`, `deleted_at`, `created_at`, `updated_at`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "fields%5BpostCategory%5D",
+                                    "value": "",
+                                    "description": "*string* - \nComma-separated field\/attribute names of the post_category resource to include in the response document.\nThe available fields for current endpoint are: `id`, `name`, `deleted_at`, `created_at`, `updated_at`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "fields%5Badmin%5D",
+                                    "value": "",
+                                    "description": "*string* - \nComma-separated field\/attribute names of the admin resource to include in the response document.\nThe available fields for current endpoint are: `id`, `name`, `email`, `password`, `deleted_at`, `created_at`, `updated_at`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "include",
+                                    "value": "",
+                                    "description": "*string* - \nComma-separated relationship names to include in the response document.\nThe available relationships for current endpoint are: `postCategory`, `admin`, `comments`, `postTags`, `tags`.",
+                                    "disabled": true
+                                }
+                            ],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/posts\/:post?fields%5Bposts%5D=&fields%5BpostCategory%5D=&fields%5Badmin%5D=&include=",
+                            "variable": [
+                                {
+                                    "id": "post",
+                                    "key": "post",
+                                    "value": "",
+                                    "description": "*integer* - \nThe identifier of a specific post resource."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Display a specific post resource identified by the given id\/key."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Resource.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/posts\/:post",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/posts\/:post",
+                            "variable": [
+                                {
+                                    "id": "post",
+                                    "key": "post",
+                                    "value": "",
+                                    "description": "*integer* - \nThe identifier of a specific post resource."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"post_category_id\": 13,\n    \"title\": \"explicabo\",\n    \"description\": \"ipsam\",\n    \"content\": \"omnis\",\n    \"published\": false\n}"
+                        },
+                        "description": "Update a specific post resource identified by the given id\/key."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Resource.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/posts\/:post",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/posts\/:post",
+                            "variable": [
+                                {
+                                    "id": "post",
+                                    "key": "post",
+                                    "value": "",
+                                    "description": "*integer* - \nThe identifier of a specific post resource."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Delete a specific post resource identified by the given id\/key."
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Post Tag Management",
+            "description": "\nAPI Endpoints for managing post tags.",
+            "item": [
+                {
+                    "name": "Resource Collection.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/post_tags",
+                            "query": [
+                                {
+                                    "key": "fields%5Bpost_tags%5D",
+                                    "value": "",
+                                    "description": "*string* - \nComma-separated field\/attribute names of the post_tag resource to include in the response document.\nThe available fields for current endpoint are: `id`, `post_id`, `tag_id`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "fields%5Bpost%5D",
+                                    "value": "",
+                                    "description": "*string* - \nComma-separated field\/attribute names of the post resource to include in the response document.\nThe available fields for current endpoint are: `id`, `post_category_id`, `admin_id`, `title`, `description`, `content`, `published`, `deleted_at`, `created_at`, `updated_at`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "fields%5Btag%5D",
+                                    "value": "",
+                                    "description": "*string* - \nComma-separated field\/attribute names of the tag resource to include in the response document.\nThe available fields for current endpoint are: `id`, `name`, `deleted_at`, `created_at`, `updated_at`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "page%5Bsize%5D",
+                                    "value": "",
+                                    "description": "*integer* - \nDescribe how many records to display in a collection.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "page%5Bnumber%5D",
+                                    "value": "",
+                                    "description": "*integer* - \nDescribe the number of current page to display.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "include",
+                                    "value": "",
+                                    "description": "*string* - \nComma-separated relationship names to include in the response document.\nThe available relationships for current endpoint are: `post`, `tag`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "sort",
+                                    "value": "",
+                                    "description": "*string* - \nField\/attribute to sort the resources in response document by.\nThe available fields for sorting operation in current endpoint are: `id`, `post_id`, `tag_id`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "filter%5B%60filterName%60%5D",
+                                    "value": "",
+                                    "description": "*string* - \nFilter the resources by specifying *attribute name* or *query scope name*.\nThe available filters for current endpoint are: `id`, `post_id`, `tag_id`, `post.id`, `post.post_category_id`, `post.admin_id`, `post.title`, `post.description`, `post.content`, `post.published`, `post.deleted_at`, `post.created_at`, `post.updated_at`, `tag.id`, `tag.name`, `tag.deleted_at`, `tag.created_at`, `tag.updated_at`.",
+                                    "disabled": true
+                                }
+                            ],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/post_tags?fields%5Bpost_tags%5D=&fields%5Bpost%5D=&fields%5Btag%5D=&page%5Bsize%5D=&page%5Bnumber%5D=&include=&sort=&filter%5B%60filterName%60%5D="
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Display a collection of the post tag resources in paginated document format."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Create Resource.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/post_tags",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/post_tags"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"post_id\": 11,\n    \"tag_id\": 7\n}"
+                        },
+                        "description": "Create a new post tag resource."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Show Resource.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/post_tags\/:post_tag",
+                            "query": [
+                                {
+                                    "key": "fields%5Bpost_tags%5D",
+                                    "value": "",
+                                    "description": "*string* - \nComma-separated field\/attribute names of the post_tag resource to include in the response document.\nThe available fields for current endpoint are: `id`, `post_id`, `tag_id`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "fields%5Bpost%5D",
+                                    "value": "",
+                                    "description": "*string* - \nComma-separated field\/attribute names of the post resource to include in the response document.\nThe available fields for current endpoint are: `id`, `post_category_id`, `admin_id`, `title`, `description`, `content`, `published`, `deleted_at`, `created_at`, `updated_at`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "fields%5Btag%5D",
+                                    "value": "",
+                                    "description": "*string* - \nComma-separated field\/attribute names of the tag resource to include in the response document.\nThe available fields for current endpoint are: `id`, `name`, `deleted_at`, `created_at`, `updated_at`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "include",
+                                    "value": "",
+                                    "description": "*string* - \nComma-separated relationship names to include in the response document.\nThe available relationships for current endpoint are: `post`, `tag`.",
+                                    "disabled": true
+                                }
+                            ],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/post_tags\/:post_tag?fields%5Bpost_tags%5D=&fields%5Bpost%5D=&fields%5Btag%5D=&include=",
+                            "variable": [
+                                {
+                                    "id": "post_tag",
+                                    "key": "post_tag",
+                                    "value": "non",
+                                    "description": ""
+                                },
+                                {
+                                    "id": "postTag",
+                                    "key": "postTag",
+                                    "value": "",
+                                    "description": "*integer* - \nThe identifier of a specific post tag resource."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Display a specific post tag resource identified by the given id\/key."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Resource.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/post_tags\/:post_tag",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/post_tags\/:post_tag",
+                            "variable": [
+                                {
+                                    "id": "post_tag",
+                                    "key": "post_tag",
+                                    "value": "saepe",
+                                    "description": ""
+                                },
+                                {
+                                    "id": "postTag",
+                                    "key": "postTag",
+                                    "value": "",
+                                    "description": "*integer* - \nThe identifier of a specific post tag resource."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"post_id\": 4,\n    \"tag_id\": 18\n}"
+                        },
+                        "description": "Update a specific post tag resource identified by the given id\/key."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Resource.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/post_tags\/:post_tag",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/post_tags\/:post_tag",
+                            "variable": [
+                                {
+                                    "id": "post_tag",
+                                    "key": "post_tag",
+                                    "value": "et",
+                                    "description": ""
+                                },
+                                {
+                                    "id": "postTag",
+                                    "key": "postTag",
+                                    "value": "",
+                                    "description": "*integer* - \nThe identifier of a specific post tag resource."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Delete a specific post tag resource identified by the given id\/key."
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Tag Management",
+            "description": "\nAPI Endpoints for managing tags.",
+            "item": [
+                {
+                    "name": "Resource Collection.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/tags",
+                            "query": [
+                                {
+                                    "key": "fields%5Btags%5D",
+                                    "value": "",
+                                    "description": "*string* - \nComma-separated field\/attribute names of the tag resource to include in the response document.\nThe available fields for current endpoint are: `id`, `name`, `deleted_at`, `created_at`, `updated_at`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "page%5Bsize%5D",
+                                    "value": "",
+                                    "description": "*integer* - \nDescribe how many records to display in a collection.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "page%5Bnumber%5D",
+                                    "value": "",
+                                    "description": "*integer* - \nDescribe the number of current page to display.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "include",
+                                    "value": "",
+                                    "description": "*string* - \nComma-separated relationship names to include in the response document.\nThe available relationships for current endpoint are: `postTags`, `posts`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "sort",
+                                    "value": "",
+                                    "description": "*string* - \nField\/attribute to sort the resources in response document by.\nThe available fields for sorting operation in current endpoint are: `id`, `name`, `deleted_at`, `created_at`, `updated_at`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "filter%5B%60filterName%60%5D",
+                                    "value": "",
+                                    "description": "*string* - \nFilter the resources by specifying *attribute name* or *query scope name*.\nThe available filters for current endpoint are: `id`, `name`, `deleted_at`, `created_at`, `updated_at`.",
+                                    "disabled": true
+                                }
+                            ],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/tags?fields%5Btags%5D=&page%5Bsize%5D=&page%5Bnumber%5D=&include=&sort=&filter%5B%60filterName%60%5D="
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Display a collection of the tag resources in paginated document format."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Create Resource.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/tags",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/tags"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"aut\"\n}"
+                        },
+                        "description": "Create a new tag resource."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Show Resource.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/tags\/:tag",
+                            "query": [
+                                {
+                                    "key": "fields%5Btags%5D",
+                                    "value": "",
+                                    "description": "*string* - \nComma-separated field\/attribute names of the tag resource to include in the response document.\nThe available fields for current endpoint are: `id`, `name`, `deleted_at`, `created_at`, `updated_at`.",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "include",
+                                    "value": "",
+                                    "description": "*string* - \nComma-separated relationship names to include in the response document.\nThe available relationships for current endpoint are: `postTags`, `posts`.",
+                                    "disabled": true
+                                }
+                            ],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/tags\/:tag?fields%5Btags%5D=&include=",
+                            "variable": [
+                                {
+                                    "id": "tag",
+                                    "key": "tag",
+                                    "value": "",
+                                    "description": "*integer* - \nThe identifier of a specific tag resource."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Display a specific tag resource identified by the given id\/key."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Resource.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/tags\/:tag",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/tags\/:tag",
+                            "variable": [
+                                {
+                                    "id": "tag",
+                                    "key": "tag",
+                                    "value": "",
+                                    "description": "*integer* - \nThe identifier of a specific tag resource."
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"ipsum\"\n}"
+                        },
+                        "description": "Update a specific tag resource identified by the given id\/key."
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Resource.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/tags\/:tag",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/tags\/:tag",
+                            "variable": [
+                                {
+                                    "id": "tag",
+                                    "key": "tag",
+                                    "value": "",
+                                    "description": "*integer* - \nThe identifier of a specific tag resource."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Delete a specific tag resource identified by the given id\/key."
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "bearer"
+    }
+}
