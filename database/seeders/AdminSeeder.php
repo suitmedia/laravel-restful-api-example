@@ -15,9 +15,13 @@ class AdminSeeder extends Seeder
     public function run()
     {
         Admin::factory()->create([
+            'email' => 'admin@admin.com',
+            'password' => 'password',
             'role' => Admin::ROLE_SUPERADMIN
         ]);
         
-        Admin::factory(10)->create();
+        Admin::factory(10)->create([
+            'password' => 'password',
+        ]);
     }
 }
