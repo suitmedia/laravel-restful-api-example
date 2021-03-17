@@ -26,9 +26,9 @@ class AppServiceProvider extends ServiceProvider
     {
         Builder::macro('whereLike', function ($attributes, string $searchTerm) {
             $this->where(function (Builder $query) use ($attributes, $searchTerm) {
-                foreach (Arr::wrap($attributes) as $attribute) {
+                foreach (\Arr::wrap($attributes) as $attribute) {
                     $query->when(
-                        Str::contains($attribute, '.'),
+                        \Str::contains($attribute, '.'),
                         function (Builder $query) use ($attribute, $searchTerm) {
                             [$relationName, $relationAttribute] = explode('.', $attribute);
 
