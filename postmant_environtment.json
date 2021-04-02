@@ -1,0 +1,19 @@
+{
+	"id": "80477452-619b-478f-818e-2faa59e99342",
+	"name": "Restful Example",
+	"values": [
+		{
+			"key": "base",
+			"value": "http://127.0.0.1:8004",
+			"enabled": true
+		},
+		{
+			"key": "authorization",
+			"value": "",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2021-04-02T21:25:22.769Z",
+	"_postman_exported_using": "Postman/7.36.5"
+}
