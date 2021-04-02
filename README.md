@@ -24,3 +24,5 @@ Sample repository to demonstrate RESTful API.
 ## Documentations
 * Project endpoint documentation: http://your-project-base-url/docs
 * Laravel documentation: https://laravel.com/docs/8.x
+* Postman collection: https://www.getpostman.com/collections/b3d44811ec9256df3cb2
+* Postman environtment: [Click here](postmant_environtment.json) (Change your base url on environtment base url your project)
