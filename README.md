@@ -19,7 +19,8 @@ Sample repository to demonstrate RESTful API.
 1. Run `php artisan optimize` in the root project to flush and cache configuratin.
 1. Run `php artisan migrate` in the root project to migrate main suitcms database.
 1. Run `php artisan db:seed` in the root project to seed data.
-1. Done!
+1. Run `php artisan serve` in the root project to serve your project.
+3. Done!
 
 ## Documentations
 * Project endpoint documentation: http://your-project-base-url/docs
