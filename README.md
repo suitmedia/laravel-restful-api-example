@@ -12,7 +12,7 @@ Sample repository to demonstrate RESTful API.
 
 ## Installation
 
-1. Clone this repository (**`git clone git@github.com:suitmedia/laravel-restful-api-example.git`**)
+1. Clone this repository (**`git clone https://github.com/suitmedia/laravel-restful-api-example.git`**)
 1. Create dan configure `.env` file based on `.env.example`
 1. Run `composer install` in the root project to install all dependencies including develeopment requirement.
 1. Run `php artisan key:generate` in the root project to generate new Key for new Application.
